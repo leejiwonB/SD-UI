@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UI·모션 용어 사전 · PC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0f;--panel:#141418;--ink:#ececf1;--on-ink:#111114;--muted:#9a9aa6;--line:#27272e;--stage:#19191e;--accent:#5b74ff;--accent-d:#4a63f0;--accent-2:#ff6a45;--ios:#3d8bff;--mono:'JetBrains Mono',ui-monospace,monospace}
+*{box-sizing:border-box}
+html,body{margin:0}
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;display:grid;grid-template-columns:264px 1fr;min-height:100vh;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+::selection{background:rgba(91,116,255,.4)}
+.side{position:sticky;top:0;height:100vh;overflow:auto;padding:22px 14px 18px;border-right:1px solid var(--line);background:#101013;display:flex;flex-direction:column;gap:14px;scrollbar-width:thin}
+.brand{display:flex;gap:10px;align-items:center;padding:0 4px}
+.logo{width:38px;height:38px;border-radius:10px;background:var(--ink);color:#0c0c0f;display:grid;place-items:center;font-weight:900;font-size:14px;letter-spacing:-.04em;flex:none}
+.brand b{display:block;font-size:15px;letter-spacing:-.02em}
+.brand small{color:var(--muted);font-size:10.5px;font-family:var(--mono)}
+.mode{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--panel);text-decoration:none;color:var(--muted);cursor:pointer;transition:border-color .2s}
+.mode:hover{border-color:#3d3d47}
+.mode .cap{font-size:11.5px;color:var(--muted);flex:1}
+.mode .tg{display:flex;align-items:center;gap:8px}
+.mode .l{font:700 12.5px var(--mono);transition:color .25s;color:#5d5d68}
+.mode .sw{position:relative;width:44px;height:24px;border-radius:99px;background:var(--accent);flex:none;transition:background .3s}
+.mode .sw i{position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.4);transition:transform .32s cubic-bezier(.3,1.4,.6,1)}
+.mode.mo .sw i{transform:translateX(20px)}
+.mode.pc .lp,.mode.mo .lm{color:var(--ink)}
+.mode.go.pc .sw i{transform:translateX(20px)}
+.mode.go.mo .sw i{transform:none}
+.mode.go.pc .lp{color:#5d5d68}.mode.go.pc .lm{color:var(--ink)}
+.mode.go.mo .lm{color:#5d5d68}.mode.go.mo .lp{color:var(--ink)}
+.search input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font:inherit;font-size:13px;outline:none;color:var(--ink)}
+.search input::placeholder{color:#6a6a75}
+.search input:focus{border-color:#55556a}
+#nav{display:flex;flex-direction:column;gap:2px}
+#nav button{all:unset;cursor:pointer;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:14px;color:#c9c9d2;transition:background .15s}
+#nav button:hover{background:#1b1b21}
+#nav button .n{font-family:var(--mono);font-size:10.5px;color:#5d5d68;width:16px}
+#nav button .k{flex:1;display:flex;flex-direction:column;line-height:1.25;font-weight:500}
+#nav button .k small{font-family:var(--mono);font-size:10px;color:#73737e;font-weight:400}
+#nav button .c{font-family:var(--mono);font-size:10.5px;color:#8a8a96;background:#1d1d23;border-radius:99px;padding:2px 7px}
+#nav button.on{background:var(--ink);color:#0c0c0f}
+#nav button.on .k small,#nav button.on .n{color:#6b6b75}
+#nav button.on .c{background:#d5d5dd;color:#2a2a30}
+.side-foot{margin:auto 4px 0;font-size:11.5px;line-height:1.6;color:#73737e}
+.side-foot b{color:#b9b9c3}
+main{padding:34px 40px 80px;min-width:0}
+.top{margin-bottom:24px;max-width:820px}
+.eyebrow{margin:0 0 6px;font-family:var(--mono);font-size:11.5px;color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.top h1{margin:0;font-size:34px;font-weight:900;letter-spacing:-.035em;line-height:1.15}
+.top p.d{margin:10px 0 0;color:#a9a9b4;font-size:14.5px;line-height:1.65}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.empty-res{color:var(--muted);font-size:14px;padding:40px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .2s}
+.card:hover{border-color:#34343d}
+.stage{position:relative;height:224px;background:var(--stage);overflow:hidden;border-bottom:1px solid var(--line);isolation:isolate}
+.hint{position:absolute;left:9px;bottom:9px;font-size:10px;font-family:var(--mono);background:rgba(20,20,24,.92);border:1px solid var(--line);padding:2px 7px;border-radius:6px;color:var(--muted);z-index:60;pointer-events:none;max-width:70%}
+.replay{position:absolute;right:8px;top:8px;z-index:60;width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:rgba(20,20,24,.92);cursor:pointer;font-size:14px;color:#a9a9b4;display:grid;place-items:center;transition:transform .3s}
+.replay:hover{transform:rotate(-120deg);color:var(--ink)}
+.meta{padding:14px 16px 15px;display:flex;flex-direction:column;gap:5px;flex:1}
+.cattag{align-self:flex-start;font-size:10.5px;background:rgba(91,116,255,.16);color:#8fa0ff;padding:2px 7px;border-radius:5px;font-weight:500}
+.names{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.names h3{margin:0;font-size:17px;letter-spacing:-.025em;font-weight:700}
+.en{font-family:var(--mono);font-size:12px;color:#8fa0ff;font-weight:600}
+.alias{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+.desc{margin:3px 0 0;font-size:13px;line-height:1.65;color:#c4c4cd}
+.foot{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:9px}
+.dev{font-family:var(--mono);font-size:10.5px;background:#1b1b20;border:1px solid var(--line);padding:4px 7px;border-radius:6px;color:#b0b0bb;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.copy{flex:none;font-size:11.5px;font-weight:500;border:1px solid var(--line);background:#1d1d23;border-radius:7px;padding:4px 9px;cursor:pointer;color:#d0d0d8}
+.copy:hover{border-color:#55556a}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--ink);color:#111114;padding:10px 16px;border-radius:10px;font-size:13px;opacity:0;pointer-events:none;transition:.3s;z-index:100}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:860px){
+  body{display:block}
+  .side{position:sticky;top:0;z-index:70;height:auto;padding:12px;gap:10px;border-right:0;border-bottom:1px solid var(--line)}
+  .side-foot{display:none}
+  .brand{display:none}
+  .mode{padding:8px 12px}
+  #nav{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:2px;scrollbar-width:none}
+  #nav::-webkit-scrollbar{display:none}
+  #nav button{flex:none;padding:7px 10px}
+  #nav button .n,#nav button .k small{display:none}
+  main{padding:22px 16px 60px}
+  .top h1{font-size:26px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',system-ui,-apple-system,sans-serif;display:grid;grid-template-columns:264px 1fr;min-height:100vh;-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+
+/* ---------- Demo common ---------- */
+.d-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:center}
+.d-col{display:flex;flex-direction:column;gap:12px;align-items:center}
+.d-btn{font:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:9px;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s,border-color .2s;line-height:1.2}
+.d-btn.p{background:var(--accent);color:#fff}
+.d-btn.p:hover{background:var(--accent-d);box-shadow:0 6px 16px -6px var(--accent)}
+.d-btn.s{background:#e1e6ff;color:var(--accent)}
+.d-btn.s:hover{background:#d3daff}
+.d-btn.o{background:#fff;border-color:#cbc9c1;color:var(--ink)}
+.d-btn.o:hover{border-color:var(--ink)}
+.d-btn.t{background:none;color:var(--accent);padding:9px 6px}
+.d-btn.t:hover{text-decoration:underline}
+.d-btn:disabled{background:#dcdad4;color:#9a9890;cursor:not-allowed}
+.d-btn:active:not(:disabled){transform:scale(.96)}
+.d-cap{font-size:10.5px;font-family:var(--mono);color:var(--muted)}
+
+/* switch */
+.d-switch{position:relative;display:inline-block;width:52px;height:30px;cursor:pointer}
+.d-switch input{opacity:0;position:absolute;inset:0;margin:0;cursor:pointer;z-index:1}
+.d-switch span{position:absolute;inset:0;background:#cfcdc6;border-radius:99px;transition:background .25s}
+.d-switch span::after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .3s cubic-bezier(.3,1.4,.6,1)}
+.d-switch input:checked+span{background:var(--accent)}
+.d-switch input:checked+span::after{transform:translateX(22px)}
+.d-setrow{display:flex;align-items:center;justify-content:space-between;width:210px;background:#fff;padding:10px 12px;border-radius:12px;font-size:13px}
+
+/* check radio */
+.d-check,.d-radio{display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;margin:7px 0;position:relative}
+.d-check input,.d-radio input{position:absolute;opacity:0;pointer-events:none}
+.d-check i,.d-radio i{width:20px;height:20px;border:2px solid #b9b7af;border-radius:6px;display:grid;place-items:center;transition:.2s;background:#fff;flex:none}
+.d-radio i{border-radius:50%}
+.d-check input:checked+i{background:var(--accent);border-color:var(--accent)}
+.d-check i::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);margin-top:-2px;transition:transform .2s cubic-bezier(.3,1.6,.5,1)}
+.d-check input:checked+i::after{transform:rotate(45deg) scale(1)}
+.d-radio i::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent);transform:scale(0);transition:.2s cubic-bezier(.3,1.6,.5,1)}
+.d-radio input:checked+i{border-color:var(--accent)}
+.d-radio input:checked+i::after{transform:scale(1)}
+
+/* segmented */
+.d-seg{position:relative;display:inline-flex;background:#dedcd5;border-radius:11px;padding:3px}
+.d-seg button{position:relative;z-index:1;width:66px;padding:8px 0;border:0;background:none;font:inherit;font-size:13px;color:#6a6970;cursor:pointer;transition:color .2s}
+.d-seg button.on{color:var(--ink);font-weight:600}
+.d-seg .pill{position:absolute;top:3px;bottom:3px;left:3px;width:66px;background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.12);transition:transform .35s cubic-bezier(.3,1.25,.5,1)}
+
+/* tabs */
+.d-tabs{width:250px;background:#fff;border-radius:12px;overflow:hidden}
+.d-tablist{position:relative;display:flex;border-bottom:1px solid var(--line)}
+.d-tablist button{flex:1;border:0;background:none;padding:11px 0;font:inherit;font-size:13px;color:var(--muted);cursor:pointer}
+.d-tablist button.on{color:var(--ink);font-weight:700}
+.d-tablist .ind{position:absolute;bottom:-1px;height:2px;background:var(--ink);transition:left .3s cubic-bezier(.4,0,.2,1),width .3s}
+.d-tabpanel{padding:18px 14px;font-size:12.5px;color:#4a4a52;min-height:64px}
+
+/* accordion */
+.d-acc{width:250px;background:#fff;border-radius:12px;overflow:hidden}
+.d-acc .it+.it{border-top:1px solid var(--line)}
+.d-acc button{all:unset;cursor:pointer;display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box;padding:12px 14px;font-size:13px;font-weight:600}
+.d-acc b{font-weight:400;font-size:18px;transition:transform .3s;color:var(--muted)}
+.d-acc .open b{transform:rotate(45deg)}
+.d-acc .bd{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s cubic-bezier(.4,0,.2,1)}
+.d-acc .open .bd{grid-template-rows:1fr}
+.d-acc .bd>div{overflow:hidden}
+.d-acc .bd p{margin:0;padding:0 14px 12px;font-size:12px;color:var(--muted)}
+
+/* overlay family */
+.d-overlay{position:absolute;inset:0;background:rgba(20,20,25,.45);display:grid;place-items:center;opacity:0;pointer-events:none;transition:opacity .25s;z-index:5}
+.d-overlay.show{opacity:1;pointer-events:auto}
+.d-modal{background:#fff;border-radius:14px;padding:18px;width:80%;max-width:250px;transform:scale(.9) translateY(10px);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+.d-overlay.show .d-modal{transform:none}
+.d-modal h4{margin:0 0 4px;font-size:15px}
+.d-modal p{margin:0 0 14px;font-size:12px;color:var(--muted)}
+.d-row.end{justify-content:flex-end}
+.d-sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:16px 16px 0 0;padding:8px 16px 16px;transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.9,.3,1);z-index:6}
+.d-sheet.show{transform:none}
+.d-sheet .grab{width:36px;height:4px;border-radius:9px;background:#d4d2cb;margin:0 auto 10px}
+.d-sheet .op{padding:9px 0;font-size:13px;border-bottom:1px solid #f0efea;cursor:pointer}
+.d-sheet .op:last-child{border:0;color:var(--accent-2)}
+.d-app{position:absolute;inset:0;background:#fff}
+.d-appbar{height:44px;display:flex;align-items:center;gap:10px;padding:0 12px;border-bottom:1px solid var(--line);font-size:13px;font-weight:700}
+.d-burger{width:30px;height:30px;border:0;background:none;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:6px}
+.d-burger i{display:block;height:2px;background:var(--ink);border-radius:2px}
+.d-appbody{padding:12px;display:flex;flex-direction:column;gap:7px}
+.d-appbody i{display:block;height:9px;border-radius:5px;background:#eceae4}
+.d-drawer{position:absolute;left:0;top:0;bottom:0;width:62%;background:#fff;z-index:6;padding:16px 14px;transform:translateX(-100%);transition:transform .38s cubic-bezier(.2,.9,.3,1);box-shadow:8px 0 24px -12px rgba(0,0,0,.3)}
+.d-drawer.show{transform:none}
+.d-drawer b{display:block;font-size:13px;margin-bottom:10px}
+.d-drawer a{display:block;font-size:12.5px;padding:8px 0;color:#3a3a40;border-bottom:1px solid #f0efea}
+.d-toast{position:absolute;left:50%;bottom:16px;transform:translate(-50%,140%);background:var(--ink);color:#fff;font-size:12.5px;padding:10px 14px;border-radius:10px;display:flex;gap:12px;align-items:center;white-space:nowrap;transition:transform .4s cubic-bezier(.3,1.3,.5,1),opacity .3s;opacity:0}
+.d-toast.show{transform:translate(-50%,0);opacity:1}
+.d-toast u{color:#9fb0ff;text-decoration:none;font-weight:600}
+
+/* tooltip */
+.d-tip{position:relative;display:inline-block}
+.d-tip::after{content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 10px);transform:translate(-50%,6px);background:var(--ink);color:#fff;font-size:11.5px;padding:6px 9px;border-radius:7px;white-space:nowrap;opacity:0;transition:.2s;pointer-events:none}
+.d-tip::before{content:"";position:absolute;left:50%;bottom:calc(100% + 4px);transform:translate(-50%,6px);border:6px solid transparent;border-top-color:var(--ink);border-bottom:0;opacity:0;transition:.2s}
+.d-tip:hover::after,.d-tip:hover::before{opacity:1;transform:translate(-50%,0)}
+
+/* dropdown */
+.d-dd{position:relative;align-self:flex-start;margin-top:22px}
+.d-ddbtn{display:flex;gap:16px;justify-content:space-between;align-items:center;width:180px;padding:10px 12px;border:1px solid #cbc9c1;border-radius:10px;background:#fff;font:inherit;font-size:13px;cursor:pointer}
+.d-ddbtn em{font-style:normal;transition:transform .25s;color:var(--muted)}
+.d-dd.open .d-ddbtn{border-color:var(--ink)}
+.d-dd.open .d-ddbtn em{transform:rotate(180deg)}
+.d-dd ul{position:absolute;left:0;right:0;top:calc(100% + 6px);margin:0;padding:5px;list-style:none;background:#fff;border-radius:10px;box-shadow:0 12px 30px -10px rgba(0,0,0,.25);opacity:0;transform:translateY(-6px) scale(.98);transform-origin:top;pointer-events:none;transition:.2s}
+.d-dd.open ul{opacity:1;transform:none;pointer-events:auto}
+.d-dd li{padding:8px 9px;font-size:13px;border-radius:7px;cursor:pointer}
+.d-dd li:hover{background:#f2f1ed}
+.d-dd li.sel{color:var(--accent);font-weight:600}
+
+/* badge chip */
+.d-bell{position:relative;width:40px;height:40px;border-radius:12px;background:#fff;display:grid;place-items:center}
+.d-bell em{position:absolute;top:-5px;right:-6px;min-width:19px;height:19px;padding:0 5px;border-radius:99px;background:var(--accent-2);color:#fff;font-size:10.5px;font-style:normal;font-weight:700;display:grid;place-items:center;border:2px solid var(--stage)}
+.d-badge{font-size:10.5px;font-weight:700;padding:3px 7px;border-radius:5px;background:var(--accent);color:#fff;letter-spacing:.03em}
+.d-badge.g{background:#d9f5e6;color:#15803d}
+.d-chip{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;padding:6px 10px;border-radius:99px;background:#fff;border:1px solid #d6d4cd}
+.d-chip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.d-chip x{cursor:pointer;color:var(--muted);font-size:13px;line-height:1}
+
+/* breadcrumb / pagination */
+.d-bc{display:flex;align-items:center;gap:8px;font-size:13px;background:#fff;padding:10px 14px;border-radius:10px}
+.d-bc a{color:var(--muted);cursor:pointer}
+.d-bc a:hover{color:var(--ink);text-decoration:underline}
+.d-bc i{font-style:normal;color:#bdbbb3}
+.d-pg{display:flex;gap:4px;align-items:center}
+.d-pg button{min-width:30px;height:30px;border-radius:8px;border:0;background:none;font:inherit;font-size:13px;cursor:pointer;color:#4a4a52}
+.d-pg button:hover{background:#e2e0da}
+.d-pg button.on{background:var(--ink);color:#fff;font-weight:700}
+.d-pg span{color:var(--muted);padding:0 2px}
+
+/* carousel */
+.d-car{position:relative;width:230px}
+.d-car .vp{overflow:hidden;border-radius:12px}
+.d-car .trk{display:flex;transition:transform .5s cubic-bezier(.6,0,.2,1)}
+.d-car .sl{flex:0 0 100%;height:120px;display:grid;place-items:center;color:#fff;font-weight:900;font-size:22px}
+.d-car .arr{position:absolute;top:50%;margin-top:-26px;width:26px;height:26px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.18);cursor:pointer;font-size:12px}
+.d-car .prev{left:-10px}.d-car .next{right:-10px}
+.d-car .dots{display:flex;justify-content:center;gap:5px;margin-top:10px}
+.d-car .dots i{width:6px;height:6px;border-radius:9px;background:#c9c7bf;cursor:pointer;transition:width .3s,background .3s}
+.d-car .dots i.on{width:18px;background:var(--ink)}
+
+/* stepper */
+.d-step{position:relative;display:flex;justify-content:space-between;width:250px}
+.d-step .line{position:absolute;left:14px;right:14px;top:13px;height:2px;background:#d6d4cd}
+.d-step .fill{display:block;height:100%;background:var(--accent);width:0;transition:width .45s cubic-bezier(.4,0,.2,1)}
+.stp{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11px;color:var(--muted)}
+.stp i{font-style:normal;width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid #d6d4cd;display:grid;place-items:center;font-size:12px;font-weight:700;transition:.3s}
+.stp.cur i{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 4px rgba(61,90,254,.15)}
+.stp.done i{background:var(--accent);border-color:var(--accent);color:#fff}
+.stp.cur span{color:var(--ink);font-weight:700}
+
+/* range */
+.d-range{position:relative;width:220px;padding-top:34px}
+.d-range .v{position:absolute;top:0;transform:translateX(-50%);background:var(--ink);color:#fff;font-size:11.5px;font-weight:700;padding:3px 8px;border-radius:6px;font-family:var(--mono)}
+.d-range input{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:9px;background:linear-gradient(90deg,var(--accent) var(--p),#d6d4cd var(--p));outline:none;margin:0}
+.d-range input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--accent);box-shadow:0 2px 6px rgba(0,0,0,.2);cursor:grab}
+.d-range input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--accent);cursor:grab}
+.d-range .lb{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);font-family:var(--mono);margin-top:8px}
+
+/* field */
+.d-field{position:relative;display:block;width:230px}
+.d-field input{width:100%;padding:20px 12px 8px;border:1.5px solid #cbc9c1;border-radius:10px;font:inherit;font-size:14px;outline:none;background:#fff;transition:border-color .2s}
+.d-field span{position:absolute;left:13px;top:15px;font-size:14px;color:var(--muted);pointer-events:none;transition:.2s cubic-bezier(.4,0,.2,1);transform-origin:left}
+.d-field input:focus{border-color:var(--accent)}
+.d-field input:focus+span,.d-field input:not(:placeholder-shown)+span{top:7px;transform:scale(.75);color:var(--accent)}
+
+/* hamburger */
+.d-ham{width:56px;height:56px;border-radius:14px;border:0;background:#fff;cursor:pointer;position:relative}
+.d-ham i{position:absolute;left:16px;right:16px;height:2.5px;background:var(--ink);border-radius:3px;transition:transform .35s cubic-bezier(.6,0,.2,1),opacity .2s,top .35s}
+.d-ham i:nth-child(1){top:20px}.d-ham i:nth-child(2){top:27px}.d-ham i:nth-child(3){top:34px}
+.d-ham.on i:nth-child(1){top:27px;transform:rotate(45deg)}
+.d-ham.on i:nth-child(2){opacity:0;transform:scaleX(0)}
+.d-ham.on i:nth-child(3){top:27px;transform:rotate(-45deg)}
+
+/* fab */
+.d-fabw{position:absolute;right:20px;bottom:20px;display:flex;flex-direction:column-reverse;align-items:center;gap:10px}
+.d-fab{width:52px;height:52px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:26px;cursor:pointer;box-shadow:0 8px 18px -6px var(--accent);transition:transform .3s cubic-bezier(.3,1.4,.5,1)}
+.d-fabw.on .d-fab{transform:rotate(45deg)}
+.d-mini{width:38px;height:38px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:11px;font-weight:700;box-shadow:0 4px 10px -4px rgba(0,0,0,.3);opacity:0;transform:translateY(16px) scale(.6);transition:.3s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
+.d-fabw.on .d-mini{opacity:1;transform:none;pointer-events:auto}
+.d-fabw.on .d-mini:nth-child(3){transition-delay:.05s}.d-fabw.on .d-mini:nth-child(4){transition-delay:.1s}
+
+/* avatar */
+.d-av{display:flex}
+.d-av span{width:44px;height:44px;border-radius:50%;border:3px solid var(--stage);display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;margin-left:-12px;transition:margin .3s cubic-bezier(.3,1.3,.5,1),transform .2s}
+.d-av span:first-child{margin-left:0}
+.d-av:hover span{margin-left:-2px}
+.d-av span:hover{transform:translateY(-4px)}
+.d-av .more{background:#d9d7d0;color:#4a4a52}
+
+/* search */
+.d-srch{display:flex;align-items:center;height:44px;width:44px;background:#fff;border-radius:99px;overflow:hidden;transition:width .45s cubic-bezier(.6,0,.2,1);box-shadow:0 2px 8px -4px rgba(0,0,0,.2)}
+.d-srch.on{width:230px}
+.d-srch button{flex:none;width:44px;height:44px;border:0;background:none;cursor:pointer;display:grid;place-items:center}
+.d-srch input{border:0;outline:none;font:inherit;font-size:13px;width:100%;padding-right:14px;background:none}
+
+/* ---------- Text ---------- */
+.d-type{font-size:24px;font-weight:900;letter-spacing:-.03em}
+.d-type .caret{display:inline-block;width:2px;height:1.05em;background:var(--accent);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.d-fu{text-align:center}
+.d-fu>*{opacity:0;animation:fadeUp .7s cubic-bezier(.2,.8,.2,1) forwards}
+.d-fu h4{margin:0 0 6px;font-size:26px;font-weight:900;letter-spacing:-.03em}
+.d-fu p{margin:2px 0;font-size:14px;color:#4a4a52}
+.d-fu>*:nth-child(2){animation-delay:.15s}.d-fu>*:nth-child(3){animation-delay:.3s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.ch{display:inline-block;white-space:pre}
+.d-stg{font-size:28px;font-weight:900;letter-spacing:-.02em}
+.d-stg .ch{opacity:0;animation:stg .5s cubic-bezier(.3,1.4,.5,1) forwards;animation-delay:calc(var(--i) * 45ms)}
+@keyframes stg{from{opacity:0;transform:translateY(24px) rotate(8deg)}to{opacity:1;transform:none}}
+.d-scr{font-family:var(--mono);font-size:24px;font-weight:600;color:var(--ink);letter-spacing:.04em;background:#16161a;color:#7dffb0;padding:14px 18px;border-radius:10px;min-width:220px;text-align:center}
+.d-mq{width:100%;overflow:hidden;background:var(--ink);color:#fff;padding:14px 0;transform:rotate(-3deg);margin:0 -20px}
+.d-mq .trk{display:flex;width:max-content;animation:mq 9s linear infinite}
+.d-mq:hover .trk{animation-play-state:paused}
+.d-mq span{font-size:20px;font-weight:900;letter-spacing:.02em;padding-right:24px;white-space:nowrap}
+.d-mq span b{color:var(--accent-2)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.d-count{text-align:center}
+.d-count .num{font-size:44px;font-weight:900;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.d-count .num::after{content:"+";color:var(--accent)}
+.d-count p{margin:0;font-size:12.5px;color:var(--muted)}
+.d-shim{font-size:34px;font-weight:900;letter-spacing:-.03em;background:linear-gradient(100deg,#16161a 35%,#9fb0ff 50%,#16161a 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shim 2.4s linear infinite}
+@keyframes shim{from{background-position:120% 0}to{background-position:-20% 0}}
+.d-mask{font-size:28px;font-weight:900;letter-spacing:-.03em;line-height:1.15}
+.d-mask .ln{display:block;overflow:hidden}
+.d-mask .ln>span{display:block;transform:translateY(110%);animation:maskUp .9s cubic-bezier(.7,0,.2,1) forwards}
+.d-mask .ln:nth-child(2)>span{animation-delay:.12s}.d-mask .ln:nth-child(3)>span{animation-delay:.24s}
+@keyframes maskUp{to{transform:none}}
+.d-rot{font-size:22px;font-weight:900;letter-spacing:-.03em;text-align:center;line-height:1.4}
+.d-rot .rw{display:inline-block;color:var(--accent);min-width:3.2em}
+.d-hl{font-size:19px;line-height:1.7;font-weight:700;letter-spacing:-.02em;text-align:center;margin:0}
+.d-hl mark{background:linear-gradient(transparent 58%,#ffe066 58%) no-repeat;background-size:0% 100%;color:inherit;animation:hl .8s cubic-bezier(.6,0,.3,1) forwards .3s}
+.d-hl mark+mark,.d-hl mark.m2{animation-delay:1.1s}
+@keyframes hl{to{background-size:100% 100%}}
+.d-blur{font-size:24px;font-weight:900;letter-spacing:-.03em;text-align:center;line-height:1.35}
+.d-blur .ch{opacity:0;filter:blur(12px);animation:blurIn .9s ease-out forwards;animation-delay:calc(var(--i) * 110ms)}
+@keyframes blurIn{to{opacity:1;filter:blur(0)}}
+.d-wave{font-size:30px;font-weight:900;color:var(--accent)}
+.d-wave .ch{animation:wave 1.3s ease-in-out infinite;animation-delay:calc(var(--i) * 80ms)}
+@keyframes wave{0%,60%,100%{transform:none}30%{transform:translateY(-14px)}}
+.d-glitch{position:relative;font-size:40px;font-weight:900;letter-spacing:.02em;color:#fff;background:#16161a;padding:10px 20px;border-radius:8px}
+.d-glitch span{position:relative;display:inline-block}
+.d-glitch span::before,.d-glitch span::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%}
+.d-glitch span::before{color:#ff3d7f;animation:g1 2s infinite steps(1);mix-blend-mode:screen}
+.d-glitch span::after{color:#2de2ff;animation:g2 2s infinite steps(1);mix-blend-mode:screen}
+@keyframes g1{0%,100%{clip-path:inset(0 0 100% 0);transform:none}10%{clip-path:inset(10% 0 60% 0);transform:translate(-4px,0)}14%{clip-path:inset(60% 0 10% 0);transform:translate(4px,0)}18%{clip-path:inset(0 0 100% 0)}62%{clip-path:inset(40% 0 35% 0);transform:translate(-5px,0)}66%{clip-path:inset(0 0 100% 0)}}
+@keyframes g2{0%,100%{clip-path:inset(0 0 100% 0);transform:none}11%{clip-path:inset(70% 0 5% 0);transform:translate(4px,0)}15%{clip-path:inset(15% 0 55% 0);transform:translate(-4px,0)}19%{clip-path:inset(0 0 100% 0)}63%{clip-path:inset(5% 0 70% 0);transform:translate(5px,0)}67%{clip-path:inset(0 0 100% 0)}}
+.d-fill{position:relative;font-size:42px;font-weight:900;letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px var(--ink);cursor:pointer}
+.d-fill::after{content:attr(data-t);position:absolute;left:0;top:0;color:var(--accent);-webkit-text-stroke:1.5px var(--accent);clip-path:inset(0 100% 0 0);transition:clip-path .6s cubic-bezier(.7,0,.2,1)}
+.d-fill:hover::after{clip-path:inset(0 0 0 0)}
+
+/* ---------- Interaction ---------- */
+.d-lift{width:180px;background:#fff;border-radius:14px;padding:12px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;box-shadow:0 2px 6px -2px rgba(0,0,0,.12);cursor:pointer}
+.d-lift:hover{transform:translateY(-8px);box-shadow:0 20px 30px -14px rgba(20,20,40,.35)}
+.d-lift .th{height:80px;border-radius:9px;background:linear-gradient(135deg,#ffb199,#ff5a36)}
+.d-lift b{display:block;font-size:13px;margin-top:9px}
+.d-lift small{font-size:11px;color:var(--muted)}
+.d-ripple{position:relative;overflow:hidden}
+.rp{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rp .65s ease-out forwards;pointer-events:none}
+.d-btn.o .rp,.d-rcard .rp{background:rgba(61,90,254,.22)}
+@keyframes rp{to{transform:scale(1);opacity:0}}
+.d-rcard{width:200px;height:56px;border-radius:12px;background:#fff;display:flex;align-items:center;padding:0 16px;font-size:13px;cursor:pointer;user-select:none}
+.d-mag{width:112px;height:112px;border-radius:50%;background:var(--ink);color:#fff;border:0;font:inherit;font-size:13px;font-weight:700;cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.d-mag span{display:inline-block;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.d-ul{display:flex;flex-direction:column;gap:18px;align-items:center}
+.d-ul a{position:relative;font-size:18px;font-weight:700;cursor:pointer;color:var(--ink)}
+.d-ul a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .35s cubic-bezier(.6,0,.2,1)}
+.d-ul a.l::after{transform-origin:right}.d-ul a.l:hover::after{transform-origin:left}
+.d-ul a:hover::after{transform:scaleX(1)}
+.d-ul a.c::after{transform-origin:center}
+.d-tilt{position:relative;width:170px;height:200px;border-radius:16px;background:linear-gradient(145deg,#3d5afe,#9b5cff 60%,#ff5a9e);color:#fff;padding:16px;transition:transform .2s ease-out;transform-style:preserve-3d;box-shadow:0 18px 30px -16px rgba(60,40,160,.6);overflow:hidden}
+.d-tilt b{font-size:22px;font-weight:900;display:block;margin-top:96px}
+.d-tilt small{font-size:11px;opacity:.8}
+.d-tilt .gl{position:absolute;inset:0;pointer-events:none}
+.d-likew{display:flex;align-items:center;gap:10px;background:#fff;padding:10px 16px 10px 12px;border-radius:99px}
+.d-like{position:relative;width:40px;height:40px;border:0;background:none;cursor:pointer;display:grid;place-items:center;padding:0}
+.d-like svg{width:28px;height:28px;fill:none;stroke:var(--ink);stroke-width:2;transition:fill .2s,stroke .2s}
+.d-like.on svg{fill:var(--accent-2);stroke:var(--accent-2)}
+.d-like .pt{position:absolute;left:50%;top:50%;width:7px;height:7px;border-radius:50%;pointer-events:none}
+.d-likew .cnt{font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;min-width:28px}
+.d-shake{width:230px;display:flex;flex-direction:column;gap:8px}
+.d-shake .r{display:flex;gap:6px}
+.d-shake input{flex:1;min-width:0;border:1.5px solid #cbc9c1;border-radius:9px;padding:9px 11px;font:inherit;font-size:13px;outline:none;background:#fff}
+.d-shake.bad input{border-color:#e5484d;background:#fff5f5}
+.d-shake .err{font-size:11.5px;color:#e5484d;min-height:16px}
+.d-pulse{display:flex;gap:34px;align-items:center}
+.d-live{display:flex;align-items:center;gap:8px;background:#fff;padding:8px 14px;border-radius:99px;font-size:12px;font-weight:800;letter-spacing:.06em}
+.d-dot{position:relative;width:10px;height:10px;border-radius:50%;background:#e5484d}
+.d-dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:inherit;animation:ping 1.4s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{75%,100%{transform:scale(2.8);opacity:0}}
+.d-pbtn{position:relative;width:54px;height:54px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:#fff;font-size:22px}
+.d-pbtn::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--accent);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite;z-index:-1}
+.d-spot{position:relative;width:220px;height:150px;border-radius:16px;background:#121216;border:1px solid #2a2a31;color:#fff;padding:16px;overflow:hidden;--x:50%;--y:50%}
+.d-spot::before{content:"";position:absolute;inset:0;background:radial-gradient(180px circle at var(--x) var(--y),rgba(120,140,255,.35),transparent 60%);opacity:0;transition:opacity .3s}
+.d-spot:hover::before{opacity:1}
+.d-spot b{position:relative;font-size:18px}
+.d-spot p{position:relative;font-size:12px;color:#9a9aa3;margin:6px 0 0}
+.d-flip{width:160px;height:190px;perspective:800px;cursor:pointer}
+.d-flip .in{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+.d-flip:hover .in{transform:rotateY(180deg)}
+.d-flip .f,.d-flip .b{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
+.d-flip .f{background:linear-gradient(160deg,#ffd166,#ff8a3d);color:#16161a}
+.d-flip .b{background:var(--ink);color:#fff;transform:rotateY(180deg);justify-content:center;font-size:12px;line-height:1.6}
+.d-flip b{font-size:18px}
+.d-cur{position:absolute;inset:0;cursor:none;display:flex;align-items:center;justify-content:center;gap:16px}
+.d-cur .lk{font-size:16px;font-weight:800;padding:10px;border-bottom:2px solid var(--ink)}
+.d-cur .cur,.d-cur .ring{position:absolute;left:0;top:0;border-radius:50%;pointer-events:none}
+.d-cur .cur{width:8px;height:8px;margin:-4px 0 0 -4px;background:var(--accent-2)}
+.d-cur .ring{width:34px;height:34px;margin:-17px 0 0 -17px;border:1.5px solid var(--ink);transition:width .25s,height .25s,margin .25s,background .25s}
+.d-cur.big .ring{width:64px;height:64px;margin:-32px 0 0 -32px;background:rgba(255,90,54,.15);border-color:var(--accent-2)}
+.d-press{width:150px;height:56px;border-radius:16px;border:0;background:var(--ink);color:#fff;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:transform .35s cubic-bezier(.3,1.8,.5,1);user-select:none}
+.d-press:active{transform:scale(.92);transition-duration:.1s}
+
+/* ---------- Page transition ---------- */
+.d-phone{position:relative;width:150px;height:200px;border-radius:20px;border:3px solid #1d1d22;background:#fff;overflow:hidden;box-shadow:0 12px 30px -14px rgba(0,0,0,.45);perspective:700px}
+.pg{position:absolute;inset:0;padding:10px;display:flex;flex-direction:column;gap:7px;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#fff}
+.pg.b{background:#1d1d22;color:#fff}
+.pg-top{font-size:11px;font-weight:800;padding-bottom:2px}
+.pg-hero{height:56px;border-radius:8px;background:linear-gradient(135deg,#9fb0ff,#3d5afe);flex:none}
+.pg.b .pg-hero{background:linear-gradient(135deg,#ffb199,#ff5a36);height:78px}
+.pg i{display:block;height:7px;border-radius:4px;background:#e6e4de;flex:none}
+.pg.b i{background:#3a3a42}
+.pg-go{position:absolute;right:8px;bottom:8px;font:inherit;font-size:10.5px;font-weight:700;border:0;border-radius:99px;padding:6px 10px;background:var(--accent);color:#fff;cursor:pointer}
+.pg.b .pg-go{background:#fff;color:#1d1d22}
+.curtain{position:absolute;inset:0;background:var(--accent-2);z-index:5}
+.se-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.se-card{height:64px;border-radius:10px;cursor:pointer}
+.se-detail{position:absolute;inset:0;z-index:5}
+.se-hero{position:absolute}
+.se-body{position:absolute;left:0;right:0;top:50%;bottom:0;padding:10px;display:flex;flex-direction:column;gap:7px}
+.se-body b{font-size:11px}
+.se-body i{display:block;height:7px;border-radius:4px;background:#e6e4de}
+
+/* ---------- Scroll ---------- */
+.sc{position:absolute;inset:0;overflow:auto;overscroll-behavior:contain;background:#fff;scrollbar-width:thin}
+.sc-blk{margin:10px 14px;padding:12px;border-radius:10px;background:#f2f1ec;font-size:12px;color:var(--muted)}
+.sc-blk i{display:block;height:7px;border-radius:4px;background:#e0ded7;margin-top:7px}
+.sc-hint{position:absolute;right:10px;bottom:10px;z-index:20;font-size:10.5px;background:var(--ink);color:#fff;padding:4px 9px;border-radius:99px;pointer-events:none;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .6s,transform .6s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv:nth-child(even){transition-delay:.05s}
+.px{position:relative;height:250px;overflow:hidden;background:linear-gradient(#bcd2ff,#fff1e0)}
+.px [data-sp]{position:absolute;left:0;right:0;will-change:transform}
+.px .sun{position:absolute;left:60%;top:30px;width:54px;height:54px;border-radius:50%;background:#ffb547;box-shadow:0 0 40px #ffcf7a}
+.px .sky{top:0;height:100%}
+.px svg{bottom:-2px;width:100%;height:120px}
+.px svg.h2{height:90px}
+.px h4{top:70px;margin:0;text-align:center;font-size:30px;font-weight:900;letter-spacing:.06em;color:#fff;text-shadow:0 2px 14px rgba(40,40,90,.35)}
+.sh{position:sticky;top:0;z-index:2;height:58px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-weight:900;font-size:16px;transition:height .3s,box-shadow .3s,font-size .3s}
+.sh.small{height:40px;font-size:13px;box-shadow:0 4px 14px -8px rgba(0,0,0,.3)}
+.sh span{display:flex;gap:4px}.sh span i{width:16px;height:4px;border-radius:2px;background:#d6d4cd}
+.sh.hide{transform:translateY(-100%)}
+.sh.smart{transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.pbar{position:absolute;left:0;right:0;top:0;height:4px;background:#ecebe6;z-index:10}
+.pbar i{display:block;height:100%;width:0;background:var(--accent)}
+.art{padding:22px 16px}
+.art h4{margin:0 0 10px;font-size:16px}
+.art i{display:block;height:7px;border-radius:4px;background:#ebe9e3;margin:9px 0}
+.snap{scroll-snap-type:y mandatory}
+.snap section{height:100%;scroll-snap-align:start;display:grid;place-items:center;color:#fff;font-size:34px;font-weight:900}
+.hsc{display:flex;gap:10px;overflow-x:auto;padding:0 18px;scroll-snap-type:x mandatory;scroll-padding:18px;position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);scrollbar-width:thin;padding-bottom:6px}
+.hsc>div{flex:0 0 130px;height:150px;border-radius:14px;scroll-snap-align:start;display:flex;align-items:flex-end;padding:10px;color:#fff;font-weight:800;font-size:13px}
+.irow{display:flex;align-items:center;gap:10px;margin:8px 14px;padding:10px;border-radius:10px;background:#f4f3ef;font-size:12px}
+.irow i{width:28px;height:28px;border-radius:8px;background:#dcdff8;flex:none}
+.ild{display:flex;justify-content:center;padding:10px 0 16px;opacity:0;transition:opacity .2s}
+.ild.on{opacity:1}
+.btt{position:absolute;right:14px;bottom:14px;z-index:10;width:40px;height:40px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:16px;cursor:pointer;opacity:0;transform:translateY(14px) scale(.8);transition:.3s cubic-bezier(.3,1.4,.5,1);pointer-events:none}
+.btt.show{opacity:1;transform:none;pointer-events:auto}
+
+/* ---------- Loading ---------- */
+.d-skel{position:relative;width:240px;height:110px;background:#fff;border-radius:14px;padding:14px}
+.d-skel .ly{position:absolute;inset:14px;display:flex;gap:12px;transition:opacity .4s}
+.d-skel .real{opacity:0}
+.d-skel.loaded .sk{opacity:0}.d-skel.loaded .real{opacity:1}
+.d-skel .av{width:44px;height:44px;border-radius:50%;flex:none}
+.d-skel .tx{flex:1;display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.d-skel .tx i{display:block;height:10px;border-radius:5px}
+.sk .av,.sk i{background:linear-gradient(90deg,#ecebe6 25%,#f7f6f2 50%,#ecebe6 75%);background-size:300% 100%;animation:sk 1.3s linear infinite}
+@keyframes sk{from{background-position:100% 0}to{background-position:0 0}}
+.real .av{background:linear-gradient(135deg,#9fb0ff,#3d5afe)}
+.real b{font-size:13px}.real small{font-size:11.5px;color:var(--muted);line-height:1.5}
+.d-spin{width:40px;height:40px;border-radius:50%;border:4px solid #dcdad3;border-top-color:var(--accent);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.d-spokes{position:relative;width:36px;height:36px}
+.d-spokes i{position:absolute;left:16px;top:0;width:4px;height:10px;border-radius:2px;background:var(--ink);transform-origin:2px 18px;animation:fadeSp 1s linear infinite}
+@keyframes fadeSp{from{opacity:1}to{opacity:.15}}
+.d-pb{width:240px;display:flex;flex-direction:column;gap:6px}
+.d-pb .bar{height:8px;border-radius:9px;background:#dcdad3;overflow:hidden;position:relative}
+.pb-det i{display:block;height:100%;width:0;background:var(--accent);border-radius:9px;transition:width .25s}
+.pb-ind i{position:absolute;top:0;bottom:0;width:40%;background:var(--accent-2);border-radius:9px;animation:ind 1.3s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes ind{from{left:-40%}to{left:100%}}
+.d-pb .lb{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--mono)}
+.d-dots{display:flex;gap:7px;background:#fff;padding:14px 18px;border-radius:18px 18px 18px 4px}
+.d-dots i{width:9px;height:9px;border-radius:50%;background:#9a9890;animation:dotb 1.1s ease-in-out infinite}
+.d-dots i:nth-child(2){animation-delay:.15s}.d-dots i:nth-child(3){animation-delay:.3s}
+@keyframes dotb{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-7px);opacity:1}}
+.d-ring{position:relative;width:110px;height:110px}
+.d-ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.d-ring circle{fill:none;stroke-width:9}
+.d-ring .bg{stroke:#dcdad3}.d-ring .fg{stroke:var(--accent);stroke-linecap:round}
+.d-ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
+.d-ok{display:flex;flex-direction:column;align-items:center;gap:10px}
+.d-ok svg{width:80px;height:80px;animation:okPop .4s cubic-bezier(.3,1.6,.5,1) .7s both}
+.d-ok circle{fill:none;stroke:#16a34a;stroke-width:4;stroke-dasharray:220;stroke-dashoffset:220;animation:draw .6s ease-out forwards}
+.d-ok path{fill:none;stroke:#16a34a;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .35s ease-out .55s forwards}
+.d-ok b{font-size:14px;opacity:0;animation:fadeUp .4s ease-out .8s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes okPop{0%{transform:scale(1)}50%{transform:scale(1.12)}100%{transform:scale(1)}}
+.d-empty{text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
+.d-empty svg{width:64px;height:64px;margin-bottom:4px}
+.d-empty b{font-size:14px}
+.d-empty p{margin:0 0 8px;font-size:12px;color:var(--muted)}
+.d-lbtn{min-width:150px;height:46px;border-radius:12px;border:0;background:var(--accent);color:#fff;font:inherit;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:background .3s,min-width .3s}
+.d-lbtn.loading{background:#7d8fff;cursor:wait}
+.d-lbtn.done{background:#16a34a}
+.d-lbtn .sp{width:16px;height:16px;border-radius:50%;border:2.5px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .7s linear infinite}
+
+/* ---------- Easing ---------- */
+.d-ease{display:flex;gap:14px;align-items:center;width:100%}
+.d-ease svg{width:96px;height:140px;flex:none;overflow:visible}
+.d-ease .box{fill:#fff;stroke:#dcdad3;stroke-width:1}
+.d-ease .p{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.d-ease .ax{font:8px var(--mono);fill:#9a9890}
+.d-ease .lanes{flex:1;display:flex;flex-direction:column;gap:18px;min-width:0}
+.d-ease .lane{position:relative;height:26px;border-bottom:1px dashed #cfcdc6}
+.d-ease .dot{position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--accent);box-shadow:0 4px 10px -4px var(--accent)}
+.d-ease .ref .dot{background:#c9c7bf;box-shadow:none;width:14px;height:14px;top:6px}
+.d-ease .lane span{position:absolute;right:0;top:-15px;font:10px var(--mono);color:var(--muted)}
+
+/* ---------- Layout ---------- */
+.wf{width:100%;height:100%;display:grid;gap:6px}
+.wf .b{background:#fff;border:1.5px solid #d3d1c9;border-radius:7px;position:relative;display:flex;align-items:center;justify-content:center;font:10px var(--mono);color:#8a8981;min-width:0;min-height:0}
+.wf .b.ac{border-color:var(--accent);background:#eef0ff;color:var(--accent);font-weight:600}
+.lbl{position:absolute;font:600 9.5px var(--mono);background:var(--accent);color:#fff;padding:2px 6px;border-radius:4px;z-index:2;white-space:nowrap}
+.lbl.o{background:var(--accent-2)}
+.ln-s{display:block;height:5px;border-radius:3px;background:#e3e1da}
+.cols12{position:relative;width:100%;height:100%;background:#fff;border-radius:8px;border:1.5px solid #d3d1c9;padding:0 16px;display:grid;grid-template-columns:repeat(12,1fr);gap:6px}
+.cols12::before,.cols12::after{content:"";position:absolute;top:0;bottom:0;width:16px;background:repeating-linear-gradient(45deg,#ffe1d8 0 4px,#fff 4px 8px)}
+.cols12::before{left:0}.cols12::after{right:0}
+.cols12 i{background:rgba(61,90,254,.13);border-left:1px solid rgba(61,90,254,.3);border-right:1px solid rgba(61,90,254,.3)}
+.lv{width:100%}
+.lv .bar{display:flex;justify-content:flex-end;gap:4px;margin-bottom:8px}
+.lv .bar button{border:1px solid #d3d1c9;background:#fff;border-radius:7px;font:inherit;font-size:11px;padding:4px 9px;cursor:pointer}
+.lv .bar button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.lv .items{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.lv .items>div{background:#fff;border:1.5px solid #d3d1c9;border-radius:7px;padding:6px;display:flex;flex-direction:column;gap:5px;transition:.3s}
+.lv .items>div i{display:block;height:34px;border-radius:5px;background:#dfe4ff;flex:none;transition:.3s}
+.lv.list .items{grid-template-columns:1fr;gap:4px}
+.lv.list .items>div{flex-direction:row;align-items:center;padding:4px 6px}
+.lv.list .items>div i{width:22px;height:22px}
+.lv .items .ln-s{flex:1}
+
+/* ---------- PC additions ---------- */
+.d-browser{width:300px;border-radius:10px;background:#fff;box-shadow:0 14px 30px -16px rgba(0,0,0,.4);overflow:hidden;border:1px solid #d6d4cd}
+.bbar{height:22px;background:#ecebe6;display:flex;align-items:center;gap:4px;padding:0 8px}
+.bbar i{width:7px;height:7px;border-radius:50%}
+.bbar i:nth-child(1){background:#ff5f57}.bbar i:nth-child(2){background:#febc2e}.bbar i:nth-child(3){background:#28c840}
+.bbar span{flex:1;margin-left:8px;height:13px;border-radius:4px;background:#fff;font:9px var(--mono);color:#8a8981;display:flex;align-items:center;padding-left:6px}
+.d-phone.pcvp{width:100%;height:172px;border:0;border-radius:0;box-shadow:none}
+.pcvp .pg{padding:8px 10px;gap:6px}
+.pc-nav{display:flex;align-items:center;gap:8px;font-size:9px;padding-bottom:5px;border-bottom:1px solid #eee;flex:none}
+.pc-nav b{margin-right:auto}
+.pc-nav span{width:24px;height:5px;border-radius:3px;background:#e0ded7}
+.pg.b .pc-nav{border-color:#33333a}
+.pg.b .pc-nav span{background:#44444c}
+.pcvp .pg-hero{height:60px}
+.pc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.pcvp .pc-cards i{height:40px;border-radius:6px}
+.pc-det{display:flex;gap:10px}
+.pcvp .pg.b .pc-det .pg-hero{width:48%;height:104px}
+.pc-det .tx{flex:1;display:flex;flex-direction:column;gap:8px;padding-top:4px}
+.se-grid.pc4{grid-template-columns:repeat(4,1fr)}
+.pc4 .se-card{height:58px}
+.d-btn.sm{padding:6px 10px;font-size:11px;white-space:nowrap}
+.d-mega{position:absolute;inset:16px;background:#fff;border-radius:10px;overflow:hidden;font-size:12px}
+.d-mega .gnb{height:40px;display:flex;align-items:center;gap:14px;padding:0 12px;border-bottom:1px solid var(--line);position:relative;z-index:2;background:#fff}
+.d-mega nav{display:flex;gap:12px;flex:1}
+.d-mega .mi{cursor:pointer;color:#4a4a52;padding:12px 0;white-space:nowrap}
+.d-mega .mi em{font-style:normal;font-size:9px;display:inline-block;transition:transform .2s}
+.d-mega .mi.on{color:var(--ink);font-weight:700}
+.d-mega .mi.on em{transform:rotate(180deg)}
+.d-mega .panel{position:absolute;left:0;right:0;top:40px;background:#fff;display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:12px;padding:14px;box-shadow:0 14px 24px -14px rgba(0,0,0,.3);opacity:0;transform:translateY(-8px);pointer-events:none;transition:.25s;z-index:1}
+.d-mega.open .panel{opacity:1;transform:none;pointer-events:auto}
+.d-mega .panel b{display:block;font-size:10.5px;margin-bottom:6px;color:var(--muted)}
+.d-mega .panel a{display:block;padding:4px 0;font-size:12px;cursor:pointer}
+.d-mega .panel a:hover{color:var(--accent)}
+.d-mega .feat{background:#eef0ff;border-radius:8px;padding:8px}
+.d-mega .feat i{display:block;height:34px;border-radius:6px;background:linear-gradient(135deg,#9fb0ff,#3d5afe);margin-bottom:6px}
+.d-mega .feat b{color:var(--accent);margin:0}
+.d-mega .feat small{font-size:10.5px}
+.d-mega .pgbg{padding:16px 12px;display:flex;flex-direction:column;gap:8px}
+.d-mega .pgbg i{display:block;height:8px;border-radius:4px;background:#eceae4}
+.d-ctx{position:absolute;inset:0}
+.d-ctx .area{position:absolute;inset:16px;border:2px dashed #cfcdc6;border-radius:12px;display:grid;place-items:center;text-align:center;font-size:13px;color:var(--muted);user-select:none}
+.d-ctx .area b{color:var(--ink)}
+.d-ctx .menu{position:absolute;margin:0;padding:5px;list-style:none;width:160px;background:#fff;border-radius:10px;box-shadow:0 12px 30px -8px rgba(0,0,0,.3);font-size:12.5px;opacity:0;transform:scale(.95);transform-origin:top left;pointer-events:none;transition:opacity .15s,transform .15s;z-index:5}
+.d-ctx .menu.show{opacity:1;transform:none;pointer-events:auto}
+.d-ctx li{display:flex;justify-content:space-between;padding:6px 9px;border-radius:6px;cursor:pointer}
+.d-ctx li:hover{background:var(--accent);color:#fff}
+.d-ctx kbd,.d-cmd kbd,.kbtn kbd{font-family:var(--mono);font-size:10px;opacity:.6}
+.d-ctx li.sep{height:1px;background:var(--line);padding:0;margin:4px 0;pointer-events:none}
+.d-ctx li.danger{color:#e5484d}
+.d-ctx li.danger:hover{background:#e5484d;color:#fff}
+.kbtn{display:flex;gap:14px;align-items:center;color:var(--muted)!important;min-width:220px;justify-content:space-between}
+.kbtn kbd{border:1px solid var(--line);border-radius:4px;padding:1px 5px;opacity:1}
+.d-overlay.top{place-items:start center;padding-top:18px}
+.d-cmd{width:86%;max-width:290px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 20px 40px -12px rgba(0,0,0,.4);transform:translateY(-10px) scale(.97);transition:transform .3s cubic-bezier(.3,1.3,.5,1)}
+.d-overlay.show .d-cmd{transform:none}
+.d-cmd input{width:100%;border:0;border-bottom:1px solid var(--line);padding:12px 14px;font:inherit;font-size:13px;outline:none}
+.d-cmd ul{list-style:none;margin:0;padding:5px;max-height:132px;overflow:auto}
+.d-cmd li{padding:7px 10px;border-radius:7px;font-size:12.5px;display:flex;justify-content:space-between;cursor:pointer}
+.d-cmd li.on{background:#eef0ff;color:var(--accent)}
+.d-cmd li.none{color:var(--muted);cursor:default}
+.d-table{background:#fff;border-radius:12px;overflow:hidden;width:290px;border:1px solid var(--line)}
+.d-table table{width:100%;border-collapse:collapse;font-size:12px}
+.d-table th{text-align:left;padding:8px;color:var(--muted);font-weight:600;background:#faf9f6;font-size:11px;cursor:pointer;user-select:none;white-space:nowrap}
+.d-table th:first-child{width:30px;cursor:default}
+.d-table th em{font-style:normal;font-size:8px;color:var(--accent)}
+.d-table td{padding:7px 8px;border-top:1px solid #f0efea}
+.d-table .r{text-align:right;font-variant-numeric:tabular-nums}
+.d-table .d-check{margin:0}
+.d-table .d-check i{width:16px;height:16px;border-radius:5px}
+.d-table .d-check i::after{width:4px;height:8px}
+.d-table tbody tr{transition:background .15s}
+.d-table tbody tr:hover td{background:#f7f7fc}
+.d-table tbody tr.sel td{background:#eef0ff}
+.d-table .st{font-size:10.5px;padding:2px 7px;border-radius:99px;font-weight:600}
+.st.b{background:#e3e8ff;color:var(--accent)}.st.g{background:#d9f5e6;color:#15803d}.st.y{background:#fff1cc;color:#a16207}
+.d-dp{position:absolute;top:8px;left:50%;transform:translateX(-50%)}
+.d-dp .d-ddbtn{padding:8px 12px}
+.d-dp .cal{position:absolute;top:calc(100% + 5px);left:0;width:200px;background:#fff;border-radius:12px;box-shadow:0 14px 30px -10px rgba(0,0,0,.28);padding:7px;opacity:0;transform:translateY(-6px);pointer-events:none;transition:.2s;z-index:5}
+.d-dp.open .cal{opacity:1;transform:none;pointer-events:auto}
+.d-dp.open .d-ddbtn{border-color:var(--ink)}
+.cal .hd{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;margin-bottom:2px}
+.cal .hd button{border:0;background:none;cursor:pointer;font-size:14px;width:22px;height:20px;border-radius:6px}
+.cal .hd button:hover{background:#f0efea}
+.cal .wk,.cal .days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.cal .wk span{font-size:9px;color:var(--muted);padding:1px 0}
+.cal .days button,.cal .days span{height:18px;font-size:10px;border:0;background:none;border-radius:5px;cursor:pointer;font-family:inherit;padding:0}
+.cal .days button:hover{background:#f0efea}
+.cal .days button.td{color:var(--accent);font-weight:700}
+.cal .days button.on{background:var(--accent);color:#fff}
+.d-dz{width:260px;display:flex;flex-direction:column;gap:6px}
+.d-dz .zone{height:104px;border:2px dashed #c9c7bf;border-radius:12px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;cursor:pointer;color:var(--muted);transition:.2s}
+.d-dz .zone b{font-size:12.5px;color:var(--ink)}
+.d-dz .zone small{font-size:10.5px}
+.d-dz .zone:hover,.d-dz .zone.over{border-color:var(--accent);background:#f3f5ff;color:var(--accent)}
+.d-dz .zone.over{transform:scale(1.02)}
+.d-dz .fr{display:flex;align-items:center;gap:8px;background:#fff;border-radius:8px;padding:6px 9px;font-size:11px}
+.d-dz .fr .nm{width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono)}
+.d-dz .fr .bar{flex:1;height:5px;border-radius:9px;background:#ecebe6;overflow:hidden}
+.d-dz .fr .bar i{display:block;height:100%;width:0;background:var(--accent)}
+.d-dz .fr em{font-style:normal;width:28px;text-align:right;font-family:var(--mono);color:var(--muted)}
+.d-dz .fr.done .bar i{background:#16a34a}.d-dz .fr.done em{color:#16a34a}
+.d-tags{width:250px;min-height:46px;background:#fff;border:1.5px solid #cbc9c1;border-radius:10px;padding:6px;display:flex;flex-wrap:wrap;gap:5px;align-items:center;cursor:text}
+.d-tags:focus-within{border-color:var(--accent)}
+.d-tags .tg{display:inline-flex;align-items:center;gap:5px;background:#eef0ff;color:var(--accent);font-size:12px;font-weight:600;padding:4px 6px 4px 9px;border-radius:7px}
+.d-tags .tg x{cursor:pointer;opacity:.6;font-size:13px}
+.d-tags .tg x:hover{opacity:1}
+.d-tags input{flex:1;min-width:90px;border:0;outline:none;font:inherit;font-size:12.5px;padding:4px}
+.d-rate{text-align:center;user-select:none}
+.d-rate .stars{display:flex;gap:4px;font-size:36px;cursor:pointer;justify-content:center}
+.d-rate .s{color:#d6d4cd;transition:color .15s,transform .15s;display:inline-block}
+.d-rate .s.on{color:#ffb547}
+.d-rate .s:hover{transform:scale(1.15)}
+.d-rate small{display:block;margin-top:6px;font-size:12.5px;color:var(--muted)}
+.d-pop{position:absolute;top:14px;right:60px}
+.d-bell2{position:relative;width:38px;height:38px;border-radius:11px;border:0;background:#fff;display:grid;place-items:center;cursor:pointer}
+.d-bell2 em{position:absolute;top:-4px;right:-5px;min-width:17px;height:17px;border-radius:99px;background:var(--accent-2);color:#fff;font-size:10px;font-style:normal;font-weight:700;display:grid;place-items:center;border:2px solid var(--stage);transition:transform .25s}
+.d-pop .pop{position:absolute;right:-14px;top:calc(100% + 10px);width:220px;background:#fff;border-radius:12px;box-shadow:0 14px 32px -10px rgba(0,0,0,.3);opacity:0;transform:translateY(-6px);pointer-events:none;transition:.2s;z-index:5}
+.d-pop.open .pop{opacity:1;transform:none;pointer-events:auto}
+.d-pop .pop::before{content:"";position:absolute;right:27px;top:-5px;width:10px;height:10px;background:#fff;transform:rotate(45deg)}
+.d-pop .hd{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:1px solid #f0efea;font-size:12px}
+.d-pop .hd a{color:var(--accent);font-size:11px;cursor:pointer}
+.d-pop .it{display:flex;gap:8px;padding:8px 12px;font-size:11.5px;line-height:1.4}
+.d-pop .it i{width:22px;height:22px;border-radius:50%;flex:none}
+.d-pop .it small{display:block;color:var(--muted);font-size:10px}
+.d-pop .it.new{background:#f4f6ff}
+.d-pop .it:last-child{border-radius:0 0 12px 12px}
+.d-ac{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:230px}
+.d-ac input{width:100%;padding:10px 12px;border:1.5px solid #cbc9c1;border-radius:10px;font:inherit;font-size:13px;outline:none;background:#fff}
+.d-ac input:focus{border-color:var(--accent)}
+.d-ac ul{list-style:none;margin:5px 0 0;padding:4px;background:#fff;border-radius:10px;box-shadow:0 12px 28px -10px rgba(0,0,0,.25);display:none}
+.d-ac.open ul{display:block}
+.d-ac li{padding:7px 9px;border-radius:7px;font-size:12.5px;cursor:pointer;color:#55555c}
+.d-ac li mark{background:none;color:var(--ink);font-weight:800}
+.d-ac li.on,.d-ac li:hover{background:#f1f0ec}
+.d-tree{background:#fff;border-radius:12px;padding:10px 14px;width:220px;font:12px var(--mono);user-select:none}
+.d-tree ul{list-style:none;margin:0;padding-left:16px}
+.d-tree>ul{padding:0}
+.d-tree li{line-height:1.85}
+.d-tree li.f>span{cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-weight:600}
+.d-tree li.f>span::before{content:"▸";display:inline-block;transition:transform .2s;color:var(--muted);font-size:10px;width:8px}
+.d-tree li.f.open>span::before{transform:rotate(90deg)}
+.d-tree li.f>ul{display:none}
+.d-tree li.f.open>ul{display:block}
+.d-tree li.fi{cursor:pointer;padding-left:13px;border-radius:5px;color:#55555c}
+.d-tree li.fi:hover{background:#f4f3ef}
+.d-tree li.fi.sel{background:#eef0ff;color:var(--accent);font-weight:600}
+.d-sort{list-style:none;margin:0;padding:0;width:230px;display:flex;flex-direction:column;gap:6px}
+.d-sort li{background:#fff;border-radius:10px;padding:10px 12px;font-size:13px;display:flex;align-items:center;gap:10px;cursor:grab;border:1px solid var(--line);user-select:none}
+.d-sort li em{font-style:normal;color:#b9b7af;letter-spacing:-2px;font-size:12px}
+.d-sort li b{width:20px;height:20px;border-radius:6px;background:#eef0ff;color:var(--accent);font-size:10.5px;display:grid;place-items:center}
+.d-sort li.dragging{opacity:.45;border-style:dashed;border-color:var(--accent)}
+.d-ba{position:relative;width:270px;height:170px;border-radius:12px;overflow:hidden;user-select:none}
+.d-ba .im{position:absolute;inset:0;display:flex;align-items:flex-end;padding:10px;font-size:11px;letter-spacing:.06em;color:#fff}
+.d-ba .bf{background:radial-gradient(circle at 30% 35%,#e5e5e5 0 12%,transparent 13%),radial-gradient(circle at 72% 65%,#9a9a9a 0 16%,transparent 17%),linear-gradient(135deg,#c9c9c9,#6d6d6d)}
+.d-ba .af{background:radial-gradient(circle at 30% 35%,#ffd166 0 12%,transparent 13%),radial-gradient(circle at 72% 65%,#ff6b6b 0 16%,transparent 17%),linear-gradient(135deg,#7c9cff,#9b5cff);clip-path:inset(0 0 0 var(--p));justify-content:flex-end}
+.d-ba .hd{position:absolute;top:0;bottom:0;left:var(--p);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.d-ba .hd i{position:absolute;top:50%;left:50%;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;font-size:13px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.d-ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.d-zoom{position:relative;width:240px;height:160px;border-radius:14px;overflow:hidden;cursor:pointer}
+.d-zoom .img{position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,#ffd166 0 14%,transparent 15%),radial-gradient(circle at 75% 70%,#ff6b6b 0 18%,transparent 19%),linear-gradient(135deg,#3d5afe,#9b5cff);transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.d-zoom:hover .img{transform:scale(1.14)}
+.d-zoom .cap{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;background:linear-gradient(transparent,rgba(0,0,0,.55));color:#fff;transform:translateY(20px);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.d-zoom .cap small{display:block;opacity:0;transition:opacity .4s;font-size:11px;margin-top:2px}
+.d-zoom:hover .cap{transform:none}
+.d-zoom:hover .cap small{opacity:1}
+.d-copyw{position:relative;display:flex;align-items:center;gap:12px;background:#16161a;color:#e6e6ea;border-radius:10px;padding:9px 9px 9px 14px;font-family:var(--mono);font-size:12.5px}
+.d-copyw code::before{content:"$ ";color:#7d7d86}
+.d-cp{position:relative;width:30px;height:30px;border-radius:8px;border:1px solid #3a3a42;background:#232329;color:#cfcfd6;cursor:pointer}
+.d-cp span{position:absolute;inset:0;display:grid;place-items:center;transition:transform .3s cubic-bezier(.3,1.5,.5,1),opacity .2s}
+.d-cp .b{opacity:0;transform:scale(.4);color:#5ee39a}
+.d-cp.ok .a{opacity:0;transform:scale(.4)}
+.d-cp.ok .b{opacity:1;transform:none}
+.tipc{position:absolute;right:-6px;top:-32px;font-style:normal;font-family:'Noto Sans KR',sans-serif;font-size:11px;font-weight:700;background:#fff;color:var(--ink);padding:4px 8px;border-radius:6px;box-shadow:0 4px 12px -4px rgba(0,0,0,.3);opacity:0;transform:translateY(4px);transition:.2s;pointer-events:none}
+.tipc.show{opacity:1;transform:none}
+
+/* ---------- light preview stage inside dark page ---------- */
+.stage{--ink:#16161a;--on-ink:#fff;--muted:#6f6e76;--line:#e5e3dc;--stage:#eeede8;--accent:#3d5afe;--accent-d:#2c45d8;--accent-2:#ff5a36;--ios:#0a6cff;background:#eeede8;color:#16161a;color-scheme:light;border-bottom:1px solid #27272e}
+.stage .hint{background:rgba(255,255,255,.92);border-color:#e5e3dc;color:#6f6e76}
+.stage .replay{background:rgba(255,255,255,.95);border-color:#e5e3dc;color:#55555c}
+.stage .replay:hover{color:#16161a}
+
+.stage-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:18px;font-size:14px}
+.stage-inner.full{padding:0;display:block}
+</style>
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><div class="logo">Aa</div><div><b>UI·모션 용어 사전</b><small>Designer ↔ Developer Glossary</small></div></div>
+  <a class="mode pc" href="mo.html" title="MO 버전으로 전환" aria-label="MO 버전으로 전환"><span class="cap">보기 모드 전환</span><span class="tg"><b class="l lp">PC</b><span class="sw"><i></i></span><b class="l lm">MO</b></span></a>
+  <div class="search"><input id="q" type="search" placeholder="명칭 검색 (예: 토스트, fade, 스크롤)" autocomplete="off"></div>
+  <nav id="nav"></nav>
+  <p class="side-foot">데모를 직접 클릭·호버·스크롤해 보세요.<br>↻ 다시 재생 · <b>명칭 복사</b>로 “한글명 (English)”을 바로 전달할 수 있어요.</p>
+</aside>
+<main>
+  <header class="top"><p class="eyebrow" id="eyebrow"></p><h1 id="title"></h1><p class="d" id="desc"></p></header>
+  <section id="grid" class="grid"></section>
+</main>
+<div id="toast" class="toast"></div>
+
+
+<script>
+/* ===== helpers ===== */
+function ctx(st){
+  const gen = st._gen = (st._gen||0)+1;
+  const alive = () => st._gen===gen && st.isConnected;
+  return {
+    alive,
+    after(fn,ms){ setTimeout(()=>{ if(alive()) fn(); }, ms); },
+    every(fn,ms){ const id=setInterval(()=>{ if(!alive()) return clearInterval(id); fn(); }, ms); },
+    raf(fn){ const loop=t=>{ if(!alive()) return; if(fn(t)!==false) requestAnimationFrame(loop); }; requestAnimationFrame(loop); }
+  };
+}
+function split(el, by){
+  const t = el.textContent; el.textContent='';
+  const parts = by==='w' ? t.split(' ') : [...t];
+  parts.forEach((p,i)=>{
+    const s=document.createElement('span'); s.className='ch'; s.style.setProperty('--i',i);
+    s.textContent = p; el.appendChild(s);
+    if(by==='w' && i<parts.length-1) el.appendChild(document.createTextNode(' '));
+  });
+}
+const filler = (n,label='콘텐츠') => Array.from({length:n},(_,i)=>`<div class="sc-blk">${label} ${i+1}<i></i><i style="width:70%"></i></div>`).join('');
+const SC_HINT = '<span class="sc-hint">↓ 스크롤</span>';
+
+/* ===== categories ===== */
+const CATS = [
+  {id:'ui', ko:'UI 컴포넌트', en:'Components', desc:'웹 화면을 구성하는 기본 부품들이에요. 기획서와 디자인 시안에서 가장 자주 쓰는 명칭이니, 상태(hover·active·disabled)와 함께 이름으로 전달하면 정확해요.'},
+  {id:'text', ko:'텍스트 애니메이션', en:'Text Animation', desc:'글자가 등장하고 움직이는 방식이에요. "글자가 멋지게 나오게"보다 "마스크 리빌, 스태거 40ms"처럼 이름과 수치로 요청해 보세요.'},
+  {id:'interaction', ko:'마이크로 인터랙션', en:'Micro Interaction', desc:'마우스·터치에 반응하는 작은 피드백이에요. 대부분 호버(hover)나 클릭으로 확인할 수 있어요.'},
+  {id:'page', ko:'페이지 전환', en:'Page Transition', desc:'웹 페이지와 페이지 사이를 넘어가는 방식이에요. 라우트 전환(Route Transition)이라고도 불러요. 브라우저 창 안에서 자동 재생된 뒤, 버튼을 눌러 반복해 볼 수 있어요. 모바일 앱 전환은 MO 버전에서 볼 수 있어요.'},
+  {id:'scroll', ko:'스크롤 인터랙션', en:'Scroll Interaction', desc:'스크롤 위치에 따라 일어나는 변화예요. 회색 영역 안을 직접 스크롤해 보세요.'},
+  {id:'loading', ko:'로딩 · 상태', en:'Loading & State', desc:'기다림과 결과를 사용자에게 알려주는 표현이에요. 로딩 → 성공/실패 → 빈 화면까지 상태별로 디자인을 전달하세요.'},
+  {id:'easing', ko:'이징 · 속도 곡선', en:'Easing', desc:'움직임의 가속·감속 곡선이에요. "부드럽게" 대신 정확한 이징 이름이나 cubic-bezier 값으로 요청하면 의도대로 구현돼요. 파란 점이 해당 이징, 회색 점은 비교용 linear예요.'},
+  {id:'layout', ko:'레이아웃 · 영역', en:'Layout', desc:'화면의 뼈대와 영역의 이름이에요. 수정 요청할 때 "위쪽 그거" 대신 정확한 영역 명칭을 써 보세요.'},
+];
+
+/* ===== page transition engine ===== */
+const BBAR='<div class="bbar"><i></i><i></i><i></i><span>myservice.com</span></div>';
+const NAVL='<div class="pc-nav"><b>LOGO</b><span></span><span></span><span></span></div>';
+const PHONE = `<div class="d-browser">${BBAR}<div class="d-phone pcvp">
+  <div class="pg a">${NAVL}<div class="pg-hero"></div><div class="pc-cards"><i></i><i></i><i></i></div><button class="pg-go">자세히 →</button></div>
+  <div class="pg b">${NAVL}<div class="pc-det"><div class="pg-hero"></div><div class="tx"><i></i><i style="width:70%"></i><i style="width:85%"></i><i style="width:50%"></i></div></div><button class="pg-go">← 목록</button></div>
+</div></div>`;
+const EZ = 'cubic-bezier(.65,0,.35,1)';
+const PT = {
+  fade:{out:[{opacity:1},{opacity:0}], in:[{opacity:0},{opacity:1}], d:500, e:'ease'},
+  slide:{out:[{transform:'translateX(0)'},{transform:'translateX(-100%)'}], in:[{transform:'translateX(100%)'},{transform:'translateX(0)'}]},
+  cover:{out:[{transform:'translateX(0)',filter:'brightness(1)'},{transform:'translateX(-30%)',filter:'brightness(.55)'}], in:[{transform:'translateX(100%)',boxShadow:'-10px 0 20px rgba(0,0,0,.2)'},{transform:'translateX(0)',boxShadow:'-10px 0 20px rgba(0,0,0,0)'}], e:'cubic-bezier(.2,.8,.2,1)', d:600},
+  zoom:{out:[{transform:'scale(1)',opacity:1},{transform:'scale(1.18)',opacity:0}], in:[{transform:'scale(.82)',opacity:0},{transform:'scale(1)',opacity:1}], e:'cubic-bezier(.2,.8,.2,1)', d:550},
+  flip:{out:[{transform:'rotateY(0deg)'},{transform:'rotateY(-90deg)'}], in:[{transform:'rotateY(90deg)'},{transform:'rotateY(0deg)'}], outOpt:{duration:300,easing:'ease-in'}, inOpt:{duration:320,delay:300,easing:'ease-out'}},
+  wipe:{out:[{opacity:1},{opacity:1}], in:[{clipPath:'inset(0 0 0 100%)'},{clipPath:'inset(0 0 0 0)'}], d:650, e:'cubic-bezier(.7,0,.2,1)'},
+  circle:{out:[{opacity:1},{opacity:1}], in:[{clipPath:'circle(0% at 82% 90%)'},{clipPath:'circle(150% at 82% 90%)'}], d:700, e:'cubic-bezier(.6,0,.4,1)'},
+  blur:{out:[{filter:'blur(0px)',opacity:1},{filter:'blur(10px)',opacity:0}], in:[{filter:'blur(10px)',opacity:0},{filter:'blur(0px)',opacity:1}], d:600, e:'ease'},
+  sheet:{out:[{transform:'scale(1)',borderRadius:'0px',filter:'brightness(1)'},{transform:'scale(.9)',borderRadius:'12px',filter:'brightness(.6)'}], in:[{transform:'translateY(100%)'},{transform:'translateY(0)'}], e:'cubic-bezier(.2,.9,.3,1)', d:600},
+  curtain:{custom(ph,from,to){
+    const k=document.createElement('div'); k.className='curtain'; ph.appendChild(k);
+    const o={duration:360,easing:'cubic-bezier(.7,0,.3,1)',fill:'forwards'};
+    return k.animate([{transform:'translateX(-100%)'},{transform:'translateX(0)'}],o).finished
+      .then(()=>{ from.style.visibility='hidden'; to.style.visibility='visible'; return k.animate([{transform:'translateX(0)'},{transform:'translateX(100%)'}],o).finished; })
+      .then(()=>k.remove());
+  }},
+};
+function pageInit(type){
+  return (st,c)=>{
+    const ph=st.querySelector('.d-phone'), pages=[...ph.querySelectorAll('.pg')];
+    let cur=0, busy=false; pages[1].style.visibility='hidden';
+    const go=()=>{
+      if(busy) return; busy=true;
+      const from=pages[cur], to=pages[1-cur], T=PT[type];
+      const done=()=>{ cur=1-cur; busy=false; };
+      if(T.custom){ T.custom(ph,from,to).then(done); return; }
+      to.style.visibility='visible'; from.style.zIndex=1; to.style.zIndex=2;
+      const o={duration:T.d||560, easing:T.e||EZ, fill:'both'};
+      const a1=from.animate(T.out,{...o,...(T.outOpt||{})}), a2=to.animate(T.in,{...o,...(T.inOpt||{})});
+      Promise.all([a1.finished,a2.finished]).then(()=>{ from.style.visibility='hidden'; a1.cancel(); a2.cancel(); done(); }).catch(()=>{busy=false});
+    };
+    ph.querySelectorAll('.pg-go').forEach(b=>b.addEventListener('click',go));
+    c.after(go,700);
+  };
+}
+
+/* ===== easing helpers ===== */
+const SUP_LINEAR = (window.CSS && CSS.supports && CSS.supports('animation-timing-function','linear(0, 1)'));
+const fnPath = f => 'M'+Array.from({length:81},(_,i)=>{const t=i/80;return (t*100).toFixed(1)+' '+(100-f(t)*100).toFixed(1)}).join(' L');
+const fnLinear = (f,n=60) => 'linear('+Array.from({length:n+1},(_,i)=>f(i/n).toFixed(4)).join(', ')+')';
+const bounce = t => { const n=7.5625,d=2.75; if(t<1/d) return n*t*t; if(t<2/d) return n*(t-=1.5/d)*t+.75; if(t<2.5/d) return n*(t-=2.25/d)*t+.9375; return n*(t-=2.625/d)*t+.984375; };
+const spring = t => 1-Math.exp(-6*t)*Math.cos(14*t);
+function easeItem({ko,en,alias,desc,css,bez,fn,label,devOverride}){
+  let path, timing=css;
+  if(bez){ const [a,b,c2,d]=bez; path=`M0 100 C${a*100} ${100-b*100} ${c2*100} ${100-d*100} 100 0`; }
+  else { path=fnPath(fn); if(!css){ timing = SUP_LINEAR ? fnLinear(fn) : 'ease-out'; } }
+  return {cat:'easing', ko, en, alias, desc, hint:'자동 재생',
+    dev: devOverride || ('transition-timing-function: '+(css || (bez?`cubic-bezier(${bez.join(', ')})`:'linear(…)'))),
+    html:`<div class="d-ease"><svg viewBox="-6 -32 112 166"><rect class="box" x="0" y="0" width="100" height="100" rx="3"/><text class="ax" x="0" y="112">시간 →</text><text class="ax" x="-4" y="-6">진행</text><path class="p" d="${path}"/></svg>
+      <div class="lanes"><div class="lane"><i class="dot"></i><span>${label||en}</span></div><div class="lane ref"><i class="dot"></i><span>linear</span></div></div></div>`,
+    init(st){
+      requestAnimationFrame(()=>st.querySelectorAll('.lane').forEach((l,k)=>{
+        const d=l.querySelector('.dot'), w=l.clientWidth-d.offsetWidth;
+        const kf=[{transform:'translateX(0)',offset:0,easing:k?'linear':timing},{transform:`translateX(${w}px)`,offset:.68},{transform:`translateX(${w}px)`,offset:1}];
+        try{ d.animate(kf,{duration:2100,iterations:Infinity}); }catch(e){ kf[0].easing='ease-out'; d.animate(kf,{duration:2100,iterations:Infinity}); }
+      }));
+    }};
+}
+
+/* ===== items ===== */
+const ITEMS = [
+/* ---------- UI ---------- */
+{cat:'ui', ko:'버튼', en:'Button', alias:'버튼 위계 (Primary · Secondary · Tertiary), CTA 버튼',
+ desc:'강조 정도에 따라 Primary(주요 행동) → Secondary(보조) → Outline/Ghost(테두리만) → Text(글자만)로 나눠요. 상태는 default · hover · pressed · disabled · loading으로 정의해 전달하세요.',
+ dev:'<Button variant="primary" size="md" />', hint:'호버 · 클릭',
+ html:`<div class="d-col"><div class="d-row"><button class="d-btn p">Primary</button><button class="d-btn s">Secondary</button></div><div class="d-row"><button class="d-btn o">Outline</button><button class="d-btn t">Text</button><button class="d-btn" disabled>Disabled</button></div></div>`},
+{cat:'ui', ko:'토글 스위치', en:'Toggle Switch', alias:'스위치, 온/오프 버튼',
+ desc:'누르는 즉시 적용되는 켜기/끄기 설정에 써요. "저장" 버튼을 눌러야 반영되는 항목이라면 체크박스가 더 맞아요.',
+ dev:'<input type="checkbox" role="switch">', hint:'클릭',
+ html:`<div class="d-col"><div class="d-setrow">알림 받기<label class="d-switch"><input type="checkbox" checked><span></span></label></div><div class="d-setrow">다크 모드<label class="d-switch"><input type="checkbox"><span></span></label></div></div>`},
+{cat:'ui', ko:'체크박스 · 라디오 버튼', en:'Checkbox · Radio', alias:'체크 박스, 라디오, 선택 컨트롤',
+ desc:'체크박스는 여러 개를 고를 때(다중 선택), 라디오는 그룹에서 하나만 고를 때(단일 선택) 써요.',
+ dev:'type="checkbox" / type="radio"', hint:'클릭',
+ html:`<div class="d-row" style="gap:34px;align-items:flex-start"><div><label class="d-check"><input type="checkbox" checked><i></i>이용약관 동의</label><label class="d-check"><input type="checkbox"><i></i>마케팅 수신</label><label class="d-check"><input type="checkbox" checked><i></i>위치 정보</label></div><div><label class="d-radio"><input type="radio" name="rdo1" checked><i></i>일반 배송</label><label class="d-radio"><input type="radio" name="rdo1"><i></i>빠른 배송</label><label class="d-radio"><input type="radio" name="rdo1"><i></i>매장 픽업</label></div></div>`},
+{cat:'ui', ko:'세그먼트 컨트롤', en:'Segmented Control', alias:'세그먼티드 버튼, 버튼 그룹, 토글 그룹',
+ desc:'2~5개 옵션 중 하나를 골라 같은 화면의 보기 방식을 바꿀 때 써요. 탭보다 작고 필터에 가까운 느낌이에요.',
+ dev:'SegmentedControl / ToggleGroup', hint:'클릭',
+ html:`<div class="d-seg"><span class="pill"></span><button class="on">일간</button><button>주간</button><button>월간</button></div>`,
+ init(st){const seg=st.querySelector('.d-seg'),pill=seg.querySelector('.pill'),bs=[...seg.querySelectorAll('button')];bs.forEach((b,i)=>b.onclick=()=>{bs.forEach(x=>x.classList.toggle('on',x===b));pill.style.transform=`translateX(${i*100}%)`;});}},
+{cat:'ui', ko:'탭', en:'Tabs', alias:'탭 메뉴, 탭 바, 탭 인디케이터',
+ desc:'같은 위계의 콘텐츠를 바꿔 보여줘요. 선택된 탭 아래에서 따라 움직이는 선은 인디케이터(Indicator)라고 불러요.',
+ dev:'role="tablist" · indicator', hint:'클릭',
+ html:`<div class="d-tabs"><div class="d-tablist"><button class="on">개요</button><button>리뷰</button><button>Q&amp;A</button><span class="ind"></span></div><div class="d-tabpanel"></div></div>`,
+ init(st){const bs=[...st.querySelectorAll('.d-tablist button')],ind=st.querySelector('.ind'),p=st.querySelector('.d-tabpanel'),txt=['상품의 주요 특징과 스펙을 보여주는 영역이에요.','구매자 리뷰 128개 · 평점 4.8','자주 묻는 질문과 답변 12개'];const set=(i,anim)=>{const b=bs[i];ind.style.left=b.offsetLeft+'px';ind.style.width=b.offsetWidth+'px';bs.forEach(x=>x.classList.toggle('on',x===b));p.textContent=txt[i];if(anim)p.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:280,easing:'ease-out'});};bs.forEach((b,i)=>b.onclick=()=>set(i,true));requestAnimationFrame(()=>set(0));}},
+{cat:'ui', ko:'아코디언', en:'Accordion', alias:'접기/펼치기, 콜랩스(Collapse), 익스팬더, FAQ 리스트',
+ desc:'제목을 누르면 내용이 펼쳐지는 목록이에요. 한 번에 하나만 열리게(단일) 할지, 여러 개 열리게(다중) 할지 함께 정해서 전달하세요.',
+ dev:'<details> · Collapse', hint:'클릭',
+ html:`<div class="d-acc"><div class="it open"><button>배송은 얼마나 걸리나요?<b>+</b></button><div class="bd"><div><p>결제 후 평균 2~3일 안에 도착해요.</p></div></div></div><div class="it"><button>교환·환불 규정<b>+</b></button><div class="bd"><div><p>수령 후 7일 이내 신청할 수 있어요.</p></div></div></div><div class="it"><button>해외 배송이 되나요?<b>+</b></button><div class="bd"><div><p>현재 국내 배송만 가능해요.</p></div></div></div></div>`,
+ init(st){st.querySelectorAll('.d-acc button').forEach(b=>b.onclick=()=>b.parentElement.classList.toggle('open'));}},
+{cat:'ui', ko:'모달', en:'Modal', alias:'다이얼로그(Dialog), 팝업, 레이어 팝업, 얼럿(Alert)',
+ desc:'화면 위에 떠서 다른 조작을 막는 창이에요. 뒤를 덮는 반투명한 막은 딤(Dim) 또는 오버레이(Overlay)·백드롭(Backdrop)이라고 해요.',
+ dev:'<dialog> · overlay · backdrop', hint:'클릭',
+ html:`<button class="d-btn p" data-open>모달 열기</button><div class="d-overlay"><div class="d-modal"><h4>정말 삭제할까요?</h4><p>삭제한 항목은 복구할 수 없어요.</p><div class="d-row end"><button class="d-btn o" data-close>취소</button><button class="d-btn p" data-close>삭제</button></div></div></div>`,
+ init(st){const o=st.querySelector('.d-overlay');st.querySelector('[data-open]').onclick=()=>o.classList.add('show');o.onclick=e=>{if(e.target===o||e.target.hasAttribute('data-close'))o.classList.remove('show');};}},
+{cat:'ui', ko:'드로어', en:'Drawer', alias:'사이드 메뉴, 오프캔버스(Off-canvas), 내비게이션 드로어, 사이드 패널',
+ desc:'화면 옆에서 밀려 나오는 메뉴 패널이에요. 보통 햄버거 아이콘으로 열고, 바깥(딤)을 누르면 닫혀요.',
+ dev:'Drawer / Offcanvas · placement="left"', hint:'☰ 클릭',
+ html:`<div class="d-app"><div class="d-appbar"><button class="d-burger" aria-label="메뉴"><i></i><i></i><i></i></button>MyApp</div><div class="d-appbody"><i></i><i style="width:80%"></i><i style="width:60%"></i><i></i><i style="width:75%"></i></div></div><div class="d-overlay"></div><div class="d-drawer"><b>메뉴</b><a>홈</a><a>탐색</a><a>알림</a><a>설정</a></div>`,
+ init(st,c){const o=st.querySelector('.d-overlay'),d=st.querySelector('.d-drawer');const set=v=>{o.classList.toggle('show',v);d.classList.toggle('show',v);};st.querySelector('.d-burger').onclick=()=>set(true);o.onclick=()=>set(false);d.querySelectorAll('a').forEach(a=>a.onclick=()=>set(false));}},
+{cat:'ui', ko:'토스트', en:'Toast', alias:'스낵바(Snackbar), 알림 메시지',
+ desc:'잠깐 나타났다가 자동으로 사라지는 알림이에요. "실행 취소" 같은 액션 버튼이 붙으면 스낵바라고 부르는 경우가 많아요.',
+ dev:'toast("저장되었습니다", { duration: 2000 })', hint:'클릭',
+ html:`<button class="d-btn p">저장하기</button><div class="d-toast">✓ 저장되었습니다<u>실행 취소</u></div>`,
+ init(st){const t=st.querySelector('.d-toast');let h;st.querySelector('button').onclick=()=>{t.classList.add('show');clearTimeout(h);h=setTimeout(()=>t.classList.remove('show'),2200);};}},
+{cat:'ui', ko:'툴팁', en:'Tooltip', alias:'말풍선, 팝오버(Popover)와 구분',
+ desc:'마우스를 올리면 짧은 설명을 보여주는 말풍선이에요. 클릭해야 열리고 내용이 길거나 버튼이 들어가면 팝오버(Popover)라고 구분해요.',
+ dev:'Tooltip · placement="top"', hint:'호버',
+ html:`<div class="d-row" style="gap:16px"><span class="d-tip" data-tip="링크를 복사해요"><button class="d-btn o">공유</button></span><span class="d-tip" data-tip="최대 10MB까지 올릴 수 있어요"><button class="d-btn o">ⓘ 업로드</button></span></div>`},
+{cat:'ui', ko:'드롭다운', en:'Dropdown', alias:'셀렉트 박스(Select), 콤보 박스, 풀다운 메뉴',
+ desc:'버튼을 누르면 아래로 펼쳐지는 선택 목록이에요. 검색 입력이 함께 있으면 콤보박스(Combobox)라고 해요.',
+ dev:'<select> · Listbox · Combobox', hint:'클릭',
+ html:`<div class="d-dd"><button class="d-ddbtn"><span>최신순</span><em>▾</em></button><ul><li class="sel">최신순</li><li>인기순</li><li>낮은 가격순</li><li>높은 가격순</li></ul></div>`,
+ init(st){const dd=st.querySelector('.d-dd'),lab=dd.querySelector('span');dd.querySelector('.d-ddbtn').onclick=()=>dd.classList.toggle('open');dd.querySelectorAll('li').forEach(li=>li.onclick=()=>{dd.querySelectorAll('li').forEach(x=>x.classList.toggle('sel',x===li));lab.textContent=li.textContent;dd.classList.remove('open');});}},
+{cat:'ui', ko:'배지 · 칩', en:'Badge · Chip', alias:'뱃지, 태그(Tag), 필터 칩, 알림 숫자',
+ desc:'배지는 개수·상태를 알려주는 작은 표시(알림 숫자, NEW), 칩은 선택하거나 지울 수 있는 작은 요소(태그, 필터)예요.',
+ dev:'Badge · Chip · Tag', hint:'× 클릭',
+ html:`<div class="d-col"><div class="d-row" style="gap:14px"><span class="d-bell"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16161a" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><em>3</em></span><span class="d-badge">NEW</span><span class="d-badge g">판매중</span></div><div class="d-row"><span class="d-chip on">전체</span><span class="d-chip">#디자인 <x>×</x></span><span class="d-chip">#모션 <x>×</x></span></div></div>`,
+ init(st){st.querySelectorAll('.d-chip x').forEach(x=>x.onclick=()=>{const ch=x.parentElement;ch.animate([{transform:'scale(1)',opacity:1},{transform:'scale(.6)',opacity:0}],{duration:200,fill:'forwards'}).onfinish=()=>ch.remove();});}},
+{cat:'ui', ko:'브레드크럼', en:'Breadcrumb', alias:'경로 표시, 빵 부스러기 내비게이션, 로케이션',
+ desc:'지금 보고 있는 페이지의 위치를 상위 경로와 함께 보여줘요. 각 단계를 눌러 위로 이동할 수 있어요.',
+ dev:'<nav aria-label="breadcrumb">', hint:'호버',
+ html:`<nav class="d-bc"><a>홈</a><i>›</i><a>가구</a><i>›</i><a>의자</a><i>›</i><b>라운지 체어</b></nav>`},
+{cat:'ui', ko:'페이지네이션', en:'Pagination', alias:'페이징, 페이지 번호, 페이지 내비게이션',
+ desc:'긴 목록을 페이지 단위로 나눠 이동해요. 스크롤로 계속 불러오는 무한 스크롤(스크롤 메뉴 참고)과 비교해 결정하세요.',
+ dev:'Pagination · page / pageSize', hint:'클릭',
+ html:`<div class="d-pg"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>4</button><span>…</span><button>12</button><button>›</button></div>`,
+ init(st){const bs=[...st.querySelectorAll('.d-pg button')].filter(b=>/\d/.test(b.textContent));bs.forEach(b=>b.onclick=()=>bs.forEach(x=>x.classList.toggle('on',x===b)));}},
+{cat:'ui', ko:'캐러셀', en:'Carousel', alias:'슬라이더, 배너 롤링, 스와이퍼(Swiper)',
+ desc:'여러 콘텐츠를 좌우로 넘겨 보는 영역이에요. 아래 점은 페이지 인디케이터(Dots/Pagination), 양옆은 화살표(Arrows), 자동 넘김은 오토플레이(Autoplay)라고 해요.',
+ dev:'Swiper · autoplay · loop · pagination', hint:'자동 재생 · 클릭',
+ html:`<div class="d-car"><div class="vp"><div class="trk"><div class="sl" style="background:#3d5afe">01</div><div class="sl" style="background:#ff5a36">02</div><div class="sl" style="background:#16161a">03</div><div class="sl" style="background:#14b87a">04</div></div></div><button class="arr prev">‹</button><button class="arr next">›</button><div class="dots"><i></i><i></i><i></i><i></i></div></div>`,
+ init(st,c){const tr=st.querySelector('.trk'),dots=[...st.querySelectorAll('.dots i')],n=dots.length;let i=0;const go=k=>{i=(k+n)%n;tr.style.transform=`translateX(${-i*100}%)`;dots.forEach((d,j)=>d.classList.toggle('on',j===i));};st.querySelector('.prev').onclick=()=>go(i-1);st.querySelector('.next').onclick=()=>go(i+1);dots.forEach((d,j)=>d.onclick=()=>go(j));c.every(()=>go(i+1),2600);go(0);}},
+{cat:'ui', ko:'스테퍼', en:'Stepper', alias:'단계 표시, 프로그레스 스텝, 위저드(Wizard)',
+ desc:'회원가입·결제처럼 여러 단계로 진행되는 흐름에서 지금 몇 번째 단계인지 보여줘요.',
+ dev:'Stepper · activeStep', hint:'클릭',
+ html:`<div class="d-col" style="gap:22px"><div class="d-step"><div class="line"><span class="fill"></span></div><div class="stp"><i>1</i><span>정보</span></div><div class="stp"><i>2</i><span>배송</span></div><div class="stp"><i>3</i><span>결제</span></div><div class="stp"><i>4</i><span>완료</span></div></div><button class="d-btn p nx">다음 단계</button></div>`,
+ init(st){const s=[...st.querySelectorAll('.stp')],bar=st.querySelector('.fill');let i=0;const set=()=>{s.forEach((e,j)=>{e.classList.toggle('done',j<i);e.classList.toggle('cur',j===i);e.querySelector('i').textContent=j<i?'✓':j+1;});bar.style.width=(i/(s.length-1)*100)+'%';};st.querySelector('.nx').onclick=()=>{i=(i+1)%s.length;set();};set();}},
+{cat:'ui', ko:'레인지 슬라이더', en:'Range Slider', alias:'슬라이더, 범위 선택, 볼륨 바',
+ desc:'드래그해서 값을 고르는 컨트롤이에요. 움직이는 동그라미는 썸(Thumb)·핸들, 바닥 막대는 트랙(Track)이라고 불러요.',
+ dev:'<input type="range"> · thumb · track', hint:'드래그',
+ html:`<div class="d-range"><div class="v">60</div><input type="range" min="0" max="100" value="60"><div class="lb"><span>0</span><span>100</span></div></div>`,
+ init(st){const r=st.querySelector('input'),v=st.querySelector('.v');const up=()=>{const p=+r.value;r.style.setProperty('--p',p+'%');v.textContent=p;v.style.left=`calc(${p}% + ${11-p*.22}px)`;};r.oninput=up;up();}},
+{cat:'ui', ko:'플로팅 라벨 입력창', en:'Floating Label', alias:'텍스트 필드(Text Field), 인풋, 입력 필드',
+ desc:'입력을 시작하면 안내 문구 자리에 있던 라벨이 위로 올라가 작게 남아요. 무엇을 입력 중인지 계속 보여줘요.',
+ dev:':focus · :placeholder-shown', hint:'클릭 후 입력',
+ html:`<div class="d-col"><label class="d-field"><input placeholder=" "><span>이메일 주소</span></label><label class="d-field"><input placeholder=" " value="designer"><span>이름</span></label></div>`},
+{cat:'ui', ko:'햄버거 메뉴', en:'Hamburger Menu', alias:'메뉴 아이콘, 햄버거 → X 모핑(Morphing)',
+ desc:'세 줄로 된 메뉴 아이콘이에요. 열렸을 때 X(닫기)로 모양이 바뀌는 효과를 아이콘 모핑(Morphing)이라고 해요.',
+ dev:'aria-expanded · rotate(45deg)', hint:'클릭',
+ html:`<button class="d-ham" aria-label="메뉴"><i></i><i></i><i></i></button>`,
+ init(st){const b=st.querySelector('.d-ham');b.onclick=()=>b.classList.toggle('on');}},
+{cat:'ui', ko:'아바타 그룹', en:'Avatar Group', alias:'프로필 겹치기, 아바타 스택, 참여자 목록',
+ desc:'여러 사용자를 동그란 프로필로 겹쳐 보여주고, 넘치는 인원은 +N으로 줄여 표시해요.',
+ dev:'AvatarGroup · max={4}', hint:'호버',
+ html:`<div class="d-av"><span style="background:#3d5afe">JY</span><span style="background:#ff5a36">MK</span><span style="background:#14b87a">SH</span><span style="background:#9b5cff">DW</span><span class="more">+5</span></div>`},
+{cat:'ui', ko:'확장형 검색창', en:'Expandable Search', alias:'서치 바, 검색 토글, 검색 아이콘 확장',
+ desc:'평소엔 아이콘만 있다가 누르면 입력창으로 펼쳐져요. 공간이 좁은 헤더에서 자주 써요.',
+ dev:'width transition · autofocus', hint:'🔍 클릭',
+ html:`<div class="d-srch"><button aria-label="검색"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16161a" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button><input placeholder="검색어를 입력하세요"></div>`,
+ init(st){const s=st.querySelector('.d-srch'),i=s.querySelector('input');s.querySelector('button').onclick=()=>{s.classList.toggle('on');if(s.classList.contains('on'))setTimeout(()=>i.focus(),250);};}},
+
+{cat:'ui', ko:'메가 메뉴', en:'Mega Menu', alias:'풀다운 메뉴, 전체 메뉴, 드롭다운 내비게이션',
+ desc:'GNB 메뉴에 마우스를 올리면 넓은 패널이 펼쳐지며 하위 메뉴를 한눈에 보여줘요. 메뉴가 많은 기업·커머스 사이트에서 써요.',
+ dev:'NavigationMenu · hover intent', hint:'"제품"에 호버',
+ html:`<div class="d-mega"><div class="gnb"><b>LOGO</b><nav><span class="mi has">제품 <em>▾</em></span><span class="mi">솔루션</span><span class="mi">가격</span><span class="mi">고객사례</span></nav><span class="d-btn p sm">시작하기</span></div><div class="panel"><div><b>디자인</b><a>프로토타이핑</a><a>디자인 시스템</a><a>핸드오프</a></div><div><b>개발</b><a>API 문서</a><a>SDK</a><a>플러그인</a></div><div class="feat"><i></i><b>NEW</b><small>2026 업데이트 보기 →</small></div></div><div class="pgbg"><i></i><i style="width:70%"></i><i style="width:85%"></i><i style="width:55%"></i></div></div>`,
+ init(st,c){const m=st.querySelector('.d-mega'),h=m.querySelector('.has');const set=v=>{m.classList.toggle('open',v);h.classList.toggle('on',v);};h.addEventListener('mouseenter',()=>set(true));h.addEventListener('click',()=>set(!m.classList.contains('open')));m.querySelectorAll('.mi:not(.has)').forEach(x=>x.addEventListener('mouseenter',()=>set(false)));m.addEventListener('mouseleave',()=>set(false));c.after(()=>set(true),600);}},
+{cat:'ui', ko:'컨텍스트 메뉴', en:'Context Menu', alias:'우클릭 메뉴, 오른쪽 클릭 메뉴',
+ desc:'마우스 오른쪽 버튼을 누른 위치에 뜨는 메뉴예요. 파일·캔버스를 다루는 웹 앱에서 써요. 단축키를 오른쪽에 함께 보여주면 좋아요.',
+ dev:'oncontextmenu · preventDefault()', hint:'영역 안에서 우클릭',
+ html:`<div class="d-ctx"><div class="area">이 영역에서<br><b>마우스 오른쪽 클릭</b></div><ul class="menu"><li>복사 <kbd>⌘C</kbd></li><li>붙여넣기 <kbd>⌘V</kbd></li><li>복제 <kbd>⌘D</kbd></li><li class="sep"></li><li>이름 변경</li><li class="danger">삭제 <kbd>⌫</kbd></li></ul></div>`,
+ init(st){const d=st.querySelector('.d-ctx'),m=d.querySelector('.menu');d.querySelector('.area').addEventListener('contextmenu',e=>{e.preventDefault();const r=d.getBoundingClientRect();let x=e.clientX-r.left,y=e.clientY-r.top;x=Math.min(x,r.width-166);y=Math.min(y,r.height-170);m.style.left=x+'px';m.style.top=y+'px';m.classList.remove('show');void m.offsetWidth;m.classList.add('show');});d.addEventListener('click',()=>m.classList.remove('show'));}},
+{cat:'ui', ko:'커맨드 팔레트', en:'Command Palette', alias:'⌘K 검색, 빠른 실행, 스포트라이트 검색',
+ desc:'단축키(⌘K / Ctrl+K)로 여는 검색창에서 메뉴·기능을 바로 찾아 실행해요. 키보드 ↑↓로 고르고 Enter로 실행해요.',
+ dev:'cmdk · kbar · ⌘K', hint:'클릭 후 입력 · ↑↓',
+ html:`<button class="d-btn o kbtn">검색하거나 실행하기… <kbd class="k">⌘K</kbd></button><div class="d-overlay top"><div class="d-cmd"><input placeholder="명령 또는 페이지 검색"><ul></ul></div></div>`,
+ init(st){const o=st.querySelector('.d-overlay'),inp=o.querySelector('input'),ul=o.querySelector('ul');const L=[['새 파일 만들기','⌘N'],['프로젝트 열기','⌘O'],['팀원 초대',''],['설정 열기','⌘,'],['다크 모드 전환',''],['도움말','?']];let sel=0,cur=L;const mark=()=>ul.querySelectorAll('li').forEach((li,i)=>li.classList.toggle('on',i===sel));const draw=()=>{ul.innerHTML=cur.length?cur.map(x=>`<li><span>${x[0]}</span><kbd>${x[1]}</kbd></li>`).join(''):'<li class="none">결과가 없어요</li>';if(cur.length){mark();ul.querySelectorAll('li').forEach((li,i)=>{li.onmouseenter=()=>{sel=i;mark();};li.onclick=close;});}};const open=()=>{o.classList.add('show');inp.value='';cur=L;sel=0;draw();setTimeout(()=>inp.focus(),60);};const close=()=>o.classList.remove('show');st.querySelector('.kbtn').onclick=open;o.onclick=e=>{if(e.target===o)close();};inp.oninput=()=>{const k=inp.value.trim();cur=L.filter(x=>x[0].includes(k));sel=0;draw();};inp.onkeydown=e=>{if(e.isComposing)return;if(e.key==='ArrowDown'){sel=Math.min(cur.length-1,sel+1);mark();e.preventDefault();}if(e.key==='ArrowUp'){sel=Math.max(0,sel-1);mark();e.preventDefault();}if(e.key==='Enter'||e.key==='Escape')close();};}},
+{cat:'ui', ko:'데이터 테이블', en:'Data Table', alias:'데이터 그리드, 표, 리스트 테이블',
+ desc:'행과 열로 데이터를 보여줘요. 헤더를 눌러 정렬(Sort)하고, 체크박스로 여러 행을 선택(Bulk select)해 한 번에 처리해요.',
+ dev:'TanStack Table · AG Grid', hint:'헤더 · 체크박스 클릭',
+ html:`<div class="d-table"><table><thead><tr><th><label class="d-check"><input type="checkbox"><i></i></label></th><th data-k="0">이름 <em></em></th><th data-k="1">상태 <em></em></th><th data-k="2" class="r">금액 <em></em></th></tr></thead><tbody></tbody></table></div>`,
+ init(st){let D=[['김디자인','진행중',128000],['이개발','완료',54000],['박기획','대기',230000],['최퍼블','완료',87000]];const tb=st.querySelector('tbody'),all=st.querySelector('thead input');let sk=null,dir=1;const sel=new Set();const C={'진행중':'b','완료':'g','대기':'y'};const draw=()=>{tb.innerHTML=D.map(r=>`<tr class="${sel.has(r[0])?'sel':''}"><td><label class="d-check"><input type="checkbox" ${sel.has(r[0])?'checked':''} data-n="${r[0]}"><i></i></label></td><td>${r[0]}</td><td><span class="st ${C[r[1]]}">${r[1]}</span></td><td class="r">${r[2].toLocaleString()}</td></tr>`).join('');tb.querySelectorAll('input').forEach(x=>x.onchange=()=>{x.checked?sel.add(x.dataset.n):sel.delete(x.dataset.n);all.checked=sel.size===D.length;draw();});};st.querySelectorAll('th[data-k]').forEach(th=>th.onclick=()=>{const k=+th.dataset.k;dir=sk===k?-dir:1;sk=k;D.sort((a,b)=>(a[k]>b[k]?1:-1)*dir);st.querySelectorAll('th em').forEach(e=>e.textContent='');th.querySelector('em').textContent=dir>0?'▲':'▼';draw();});all.onchange=()=>{D.forEach(r=>all.checked?sel.add(r[0]):sel.delete(r[0]));draw();};draw();}},
+{cat:'ui', ko:'데이트 피커', en:'Date Picker', alias:'달력, 캘린더 팝업, 날짜 선택',
+ desc:'입력창을 누르면 달력이 펼쳐져 날짜를 골라요. 오늘 날짜 표시(Today), 이전/다음 달 이동 화살표로 구성돼요.',
+ dev:'react-day-picker · <input type="date">', hint:'클릭',
+ html:`<div class="d-dp"><button class="d-ddbtn"><span>2026.11.23</span><em>▾</em></button><div class="cal"><div class="hd"><button class="pv">‹</button><b></b><button class="nx">›</button></div><div class="wk">${'일월화수목금토'.split('').map(d=>'<span>'+d+'</span>').join('')}</div><div class="days"></div></div></div>`,
+ init(st,c){const w=st.querySelector('.d-dp'),lab=w.querySelector('.d-ddbtn span'),days=w.querySelector('.days'),hd=w.querySelector('.hd b');let y=2026,m=10,sel=new Date(2026,10,23);const draw=()=>{hd.textContent=y+'년 '+(m+1)+'월';const f=new Date(y,m,1).getDay(),n=new Date(y,m+1,0).getDate();let h='';for(let i=0;i<f;i++)h+='<span></span>';for(let d=1;d<=n;d++){const on=sel.getFullYear()===y&&sel.getMonth()===m&&sel.getDate()===d,td=y===2026&&m===10&&d===23;h+=`<button class="${on?'on':''} ${td?'td':''}">${d}</button>`;}days.innerHTML=h;days.querySelectorAll('button').forEach(b=>b.onclick=()=>{const d=+b.textContent;sel=new Date(y,m,d);lab.textContent=`${y}.${String(m+1).padStart(2,'0')}.${String(d).padStart(2,'0')}`;w.classList.remove('open');draw();});};w.querySelector('.d-ddbtn').onclick=()=>w.classList.toggle('open');w.querySelector('.pv').onclick=()=>{m--;if(m<0){m=11;y--;}draw();};w.querySelector('.nx').onclick=()=>{m++;if(m>11){m=0;y++;}draw();};draw();c.after(()=>w.classList.add('open'),600);}},
+{cat:'ui', ko:'파일 업로드', en:'File Dropzone', alias:'드롭존, 드래그 앤 드롭 업로드, 파일 첨부',
+ desc:'파일을 끌어다 놓거나 눌러서 올리는 영역이에요. 끌고 들어오면 테두리 색이 바뀌고(Drag over), 올라가는 동안 진행률을 보여줘요.',
+ dev:'react-dropzone · dragover / drop', hint:'클릭 또는 파일 드롭',
+ html:`<div class="d-dz"><div class="zone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4M7 9l5-5 5 5M4 16v4h16v-4"/></svg><b>파일을 끌어다 놓거나 클릭</b><small>PNG, JPG, PDF · 최대 10MB</small></div><div class="files"></div></div>`,
+ init(st,c){const z=st.querySelector('.zone'),fl=st.querySelector('.files');const N=['design_v2.fig','hero@2x.png','spec.pdf','logo.svg'];let k=0;const add=name=>{const r=document.createElement('div');r.className='fr';r.innerHTML='<span class="nm"></span><span class="bar"><i></i></span><em>0%</em>';r.querySelector('.nm').textContent=name;fl.prepend(r);while(fl.children.length>2)fl.lastChild.remove();const i=r.querySelector('i'),em=r.querySelector('em');let t0;c.raf(t=>{if(t0===undefined)t0=t;const p=Math.min(100,(t-t0)/12);i.style.width=p+'%';em.textContent=p>=100?'✓':Math.floor(p)+'%';if(p>=100)r.classList.add('done');return p<100&&r.isConnected;});};z.onclick=()=>add(N[k++%N.length]);['dragenter','dragover'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.add('over');}));['dragleave','drop'].forEach(ev=>z.addEventListener(ev,e=>{e.preventDefault();z.classList.remove('over');}));z.addEventListener('drop',e=>{[...((e.dataTransfer&&e.dataTransfer.files)||[])].slice(0,2).forEach(f=>add(f.name));});c.after(()=>add(N[k++]),700);}},
+{cat:'ui', ko:'태그 입력', en:'Tag Input', alias:'칩 입력, 멀티 셀렉트 입력, 키워드 입력',
+ desc:'입력 후 Enter를 누르면 칩(태그)으로 바뀌어 쌓여요. ×로 지우거나, 빈 칸에서 Backspace로 마지막 태그를 지워요.',
+ dev:'TagsInput · Enter → chip', hint:'입력 후 Enter',
+ html:`<div class="d-tags"><input placeholder="태그 입력 후 Enter"></div>`,
+ init(st){const w=st.querySelector('.d-tags'),inp=w.querySelector('input');const mk=t=>{const s=document.createElement('span');s.className='tg';s.textContent=t;const x=document.createElement('x');x.textContent='×';x.onclick=e=>{e.stopPropagation();s.remove();};s.appendChild(x);w.insertBefore(s,inp);s.animate([{transform:'scale(.6)',opacity:0},{transform:'scale(1)',opacity:1}],{duration:220,easing:'cubic-bezier(.3,1.5,.5,1)'});};['디자인','UI','모션'].forEach(mk);w.onclick=()=>inp.focus();inp.onkeydown=e=>{if(e.isComposing)return;if((e.key==='Enter'||e.key===',')&&inp.value.trim()){e.preventDefault();mk(inp.value.trim().replace(/,$/,''));inp.value='';}else if(e.key==='Backspace'&&!inp.value){const t=w.querySelectorAll('.tg');if(t.length)t[t.length-1].remove();}};}},
+{cat:'ui', ko:'별점', en:'Star Rating', alias:'레이팅, 평점 선택, 리뷰 별점',
+ desc:'별에 마우스를 올리면 미리 채워지고(Hover preview), 클릭하면 점수가 정해져요. 점수마다 짧은 문구를 함께 보여주면 좋아요.',
+ dev:'Rating · value / onHover', hint:'호버 · 클릭',
+ html:`<div class="d-rate"><div class="stars">${'<span class="s">★</span>'.repeat(5)}</div><small>별점을 선택하세요</small></div>`,
+ init(st){const ss=[...st.querySelectorAll('.d-rate .s')],lb=st.querySelector('.d-rate small');const T=['별로예요','그저 그래요','괜찮아요','좋아요','최고예요'];let v=0;const paint=n=>ss.forEach((s,i)=>s.classList.toggle('on',i<n));ss.forEach((s,i)=>{s.onmouseenter=()=>{paint(i+1);lb.textContent=T[i];};s.onclick=()=>{v=i+1;s.animate([{transform:'scale(1.4)'},{transform:'scale(1)'}],{duration:250});};});st.querySelector('.stars').onmouseleave=()=>{paint(v);lb.textContent=v?v+'점 · '+T[v-1]:'별점을 선택하세요';};}},
+{cat:'ui', ko:'팝오버', en:'Popover', alias:'알림 패널, 드롭다운 패널, 플라이아웃',
+ desc:'버튼을 누르면 옆에 붙어 뜨는 작은 패널이에요. 툴팁보다 내용이 많고 버튼·링크를 넣을 수 있어요. 바깥을 누르면 닫혀요.',
+ dev:'Popover · Floating UI', hint:'종 아이콘 클릭',
+ html:`<div class="d-pop"><button class="d-bell2" aria-label="알림"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16161a" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 0 0 4 0"/></svg><em>2</em></button><div class="pop"><div class="hd"><b>알림</b><a>모두 읽음</a></div><div class="it new"><i style="background:#3d5afe"></i><span>민지님이 댓글을 남겼어요<small>방금</small></span></div><div class="it new"><i style="background:#ff5a36"></i><span>디자인 v2가 승인됐어요<small>10분 전</small></span></div><div class="it"><i style="background:#14b87a"></i><span>새 팀원이 합류했어요<small>어제</small></span></div></div></div>`,
+ init(st,c){const w=st.querySelector('.d-pop'),em=w.querySelector('em');w.querySelector('.d-bell2').onclick=e=>{e.stopPropagation();w.classList.toggle('open');};w.querySelector('.hd a').onclick=()=>{w.querySelectorAll('.new').forEach(x=>x.classList.remove('new'));em.style.transform='scale(0)';};st.addEventListener('click',e=>{if(!e.target.closest('.pop'))w.classList.remove('open');});c.after(()=>w.classList.add('open'),600);}},
+{cat:'ui', ko:'자동완성', en:'Autocomplete', alias:'검색어 추천, 서제스트(Suggest), 타입어헤드',
+ desc:'입력하는 동안 맞는 후보를 아래에 보여주고, 일치하는 글자를 굵게 강조해요. ↑↓와 Enter로 고를 수 있어요.',
+ dev:'Combobox · typeahead', hint:'입력 · ↑↓ Enter',
+ html:`<div class="d-ac"><input placeholder="도시 검색 (예: 서, 부)"><ul></ul></div>`,
+ init(st){const w=st.querySelector('.d-ac'),i=w.querySelector('input'),ul=w.querySelector('ul');const L=['서울','서귀포','수원','세종','성남','부산','부천','대구','대전','광주','강릉','인천','제주','전주'];let sel=0,cur=[];const draw=()=>{const k=i.value.trim();cur=k?L.filter(x=>x.includes(k)).slice(0,5):[];ul.innerHTML=cur.map((x,j)=>`<li class="${j===sel?'on':''}">${esc(x).replace(esc(k),'<mark>'+esc(k)+'</mark>')}</li>`).join('');w.classList.toggle('open',cur.length>0);ul.querySelectorAll('li').forEach((li,j)=>li.onmousedown=e=>{e.preventDefault();i.value=cur[j];w.classList.remove('open');});};i.oninput=()=>{sel=0;draw();};i.onfocus=draw;i.onkeydown=e=>{if(e.isComposing||!cur.length)return;if(e.key==='ArrowDown'){sel=(sel+1)%cur.length;draw();e.preventDefault();}if(e.key==='ArrowUp'){sel=(sel-1+cur.length)%cur.length;draw();e.preventDefault();}if(e.key==='Enter'){i.value=cur[sel];w.classList.remove('open');}};i.onblur=()=>w.classList.remove('open');i.value='서';draw();}},
+{cat:'ui', ko:'트리 뷰', en:'Tree View', alias:'폴더 트리, 계층 목록, 파일 탐색기',
+ desc:'폴더처럼 위아래 계층이 있는 목록이에요. ▸를 누르면 하위 항목이 펼쳐져요(Expand/Collapse). 들여쓰기로 깊이를 표현해요.',
+ dev:'TreeView · role="tree"', hint:'폴더 클릭',
+ html:`<div class="d-tree"><ul><li class="f open"><span>src</span><ul><li class="f open"><span>components</span><ul><li class="fi">Button.tsx</li><li class="fi sel">Modal.tsx</li></ul></li><li class="f"><span>styles</span><ul><li class="fi">theme.css</li><li class="fi">reset.css</li></ul></li></ul></li><li class="f"><span>public</span><ul><li class="fi">logo.svg</li></ul></li><li class="fi">package.json</li></ul></div>`,
+ init(st){st.querySelectorAll('.d-tree li.f>span').forEach(s=>s.onclick=()=>s.parentElement.classList.toggle('open'));const fs=st.querySelectorAll('.d-tree .fi');fs.forEach(f=>f.onclick=()=>fs.forEach(x=>x.classList.toggle('sel',x===f)));}},
+
+/* ---------- TEXT ---------- */
+{cat:'text', ko:'타자기 효과', en:'Typewriter', alias:'타이핑 효과, 타이핑 애니메이션',
+ desc:'한 글자씩 타이핑하듯 나타났다 지워져요. 깜빡이는 세로선은 캐럿(Caret)·커서라고 해요. 타이핑 속도와 멈춤 시간을 함께 전달하세요.',
+ dev:'Typed.js · TypeIt', hint:'자동 재생',
+ html:`<div class="d-type"><span class="tx"></span><span class="caret"></span></div>`,
+ init(st,c){const el=st.querySelector('.tx'),ph=['디자인을 코드로,','코드를 경험으로.','Typewriter Effect'];let p=0,i=0,del=false;const tick=()=>{const w=ph[p];if(!del){i++;el.textContent=w.slice(0,i);if(i===w.length){del=true;return c.after(tick,1300);}}else{i--;el.textContent=w.slice(0,i);if(i===0){del=false;p=(p+1)%ph.length;return c.after(tick,300);}}c.after(tick,del?35:95);};c.after(tick,400);}},
+{cat:'text', ko:'페이드 업', en:'Fade Up', alias:'페이드 인 업(Fade In Up), 떠오르기',
+ desc:'투명도와 위치가 함께 바뀌며 아래에서 위로 떠올라요. 가장 무난하고 많이 쓰는 등장 효과예요. 이동 거리(px)와 시간을 함께 정하면 좋아요.',
+ dev:'opacity 0→1 + translateY(20px→0)', hint:'↻ 재생',
+ html:`<div class="d-fu"><h4>Fade Up</h4><p>아래에서 위로 떠오르며</p><p>나타나는 텍스트</p></div>`},
+{cat:'text', ko:'스태거', en:'Stagger', alias:'순차 등장, 시차 애니메이션, 글자별 애니메이션',
+ desc:'여러 요소(글자·단어·카드)가 일정한 시간 간격을 두고 차례로 움직여요. "글자마다 40ms씩 딜레이"처럼 간격으로 요청하세요.',
+ dev:'stagger: 0.045 · animation-delay', hint:'↻ 재생',
+ html:`<div class="d-stg">Hello, Stagger!</div>`,
+ init(st){split(st.querySelector('.d-stg'));}},
+{cat:'text', ko:'텍스트 스크램블', en:'Text Scramble', alias:'디코드(Decode) 효과, 해킹 텍스트, 랜덤 문자',
+ desc:'무작위 문자들이 섞이다가 원래 글자로 하나씩 맞춰져요. 테크·IT·게임 느낌을 줄 때 써요.',
+ dev:'GSAP ScrambleTextPlugin', hint:'자동 재생',
+ html:`<div class="d-scr">DECODE TEXT</div>`,
+ init(st,c){const el=st.querySelector('.d-scr'),fin='DECODE TEXT',cs='!<>-_/[]{}=+*^?#01ABCDEF';const run=()=>{let f=0;c.raf(()=>{f++;el.textContent=[...fin].map((ch,i)=>ch===' '?' ':(f>i*2.4+10?ch:cs[Math.random()*cs.length|0])).join('');return f<48;});};run();c.every(run,3200);}},
+{cat:'text', ko:'마퀴', en:'Marquee', alias:'흐르는 텍스트, 티커(Ticker), 무한 롤링 배너, 띠 배너',
+ desc:'텍스트가 한 방향으로 끊임없이 흘러가요. 마우스를 올리면 멈추게(Pause on hover) 하거나 속도·방향을 지정할 수 있어요.',
+ dev:'translateX(-50%) linear infinite', hint:'호버 시 정지',
+ html:`<div class="d-mq"><div class="trk"><span>NEW ARRIVAL <b>✦</b> FREE SHIPPING <b>✦</b> 20% OFF <b>✦</b></span><span>NEW ARRIVAL <b>✦</b> FREE SHIPPING <b>✦</b> 20% OFF <b>✦</b></span></div></div>`},
+{cat:'text', ko:'카운트 업', en:'Count Up', alias:'숫자 카운팅, 넘버 롤링, 넘버 티커',
+ desc:'숫자가 0부터 목표값까지 빠르게 올라가요. 성과·통계 섹션에서 화면에 보일 때 시작하도록 많이 써요.',
+ dev:'CountUp.js · requestAnimationFrame', hint:'↻ 재생',
+ html:`<div class="d-count"><div class="num">0</div><p>함께하는 디자이너</p></div>`,
+ init(st,c){const el=st.querySelector('.num'),to=12840,d=1700;let t0;c.raf(t=>{if(t0===undefined)t0=t;const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,4);el.textContent=Math.round(to*e).toLocaleString();return p<1;});}},
+{cat:'text', ko:'쉬머 텍스트', en:'Shimmer Text', alias:'샤인(Shine) 효과, 반짝이는 텍스트, 그라디언트 텍스트',
+ desc:'빛이 글자 위를 지나가듯 그라디언트가 흘러가요. 로딩 문구나 강조하고 싶은 짧은 문구에 써요.',
+ dev:'background-clip: text · background-position', hint:'자동 재생',
+ html:`<div class="d-shim">Shimmer Text</div>`},
+{cat:'text', ko:'마스크 리빌', en:'Mask Reveal', alias:'라인 리빌, 슬라이드 업 텍스트, 텍스트 리빌',
+ desc:'보이지 않는 틀(마스크) 안에서 글자가 아래부터 밀려 올라와요. 줄 단위로 시차를 주면 고급스럽고 또렷한 등장이 돼요.',
+ dev:'overflow: hidden + translateY(100%→0)', hint:'↻ 재생',
+ html:`<div class="d-mask"><span class="ln"><span>Design is</span></span><span class="ln"><span>how it</span></span><span class="ln"><span style="color:var(--accent)">works.</span></span></div>`},
+{cat:'text', ko:'단어 로테이트', en:'Word Rotate', alias:'텍스트 로테이터, 롤링 텍스트, 플립 워드',
+ desc:'문장 속 한 단어만 위아래로 바뀌며 순환해요. 헤드카피에서 여러 가치를 한 문장으로 보여줄 때 좋아요.',
+ dev:'interval + slide out / slide in', hint:'자동 재생',
+ html:`<div class="d-rot">우리는 <span class="rw">빠르게</span><br>만듭니다</div>`,
+ init(st,c){const el=st.querySelector('.rw'),ws=['빠르게','정확하게','아름답게','함께'];let i=0;c.every(()=>{const a=el.animate([{transform:'none',opacity:1},{transform:'translateY(-60%)',opacity:0}],{duration:250,easing:'ease-in',fill:'forwards'});a.onfinish=()=>{i=(i+1)%ws.length;el.textContent=ws[i];a.cancel();el.animate([{transform:'translateY(60%)',opacity:0},{transform:'none',opacity:1}],{duration:380,easing:'cubic-bezier(.2,1.3,.4,1)'});};},1900);}},
+{cat:'text', ko:'하이라이트 드로우', en:'Highlight Draw', alias:'형광펜 효과, 마커 효과, 밑줄 그리기',
+ desc:'형광펜으로 칠하듯 배경색이 왼쪽에서 오른쪽으로 채워져요. 핵심 단어에 시선을 모아줘요.',
+ dev:'background-size: 0% → 100%', hint:'↻ 재생',
+ html:`<p class="d-hl">디자이너와 개발자가<br><mark>같은 단어</mark>로 말하면<br><mark class="m2">소통이 빨라져요</mark></p>`},
+{cat:'text', ko:'블러 인', en:'Blur In', alias:'포커스 인, 블러 리빌, 디포커스',
+ desc:'흐릿하던 글자가 선명해지며 나타나요. 페이드보다 부드럽고 감성적인 느낌이에요.',
+ dev:'filter: blur(12px) → blur(0)', hint:'↻ 재생',
+ html:`<div class="d-blur">흐릿함에서 또렷함으로<br>천천히 드러나는 문장</div>`,
+ init(st){const el=st.querySelector('.d-blur');const lines=el.innerHTML.split('<br>');el.innerHTML='';let k=0;lines.forEach((ln,li)=>{const d=document.createElement('div');d.textContent=ln;split(d,'w');d.querySelectorAll('.ch').forEach(s=>s.style.setProperty('--i',k++));el.appendChild(d);});}},
+{cat:'text', ko:'웨이브 텍스트', en:'Wave Text', alias:'물결 효과, 바운싱 레터',
+ desc:'글자가 시차를 두고 위아래로 출렁여요. 로딩 문구나 귀엽고 장난스러운 톤에 어울려요.',
+ dev:'translateY keyframes + delay', hint:'자동 재생',
+ html:`<div class="d-wave">Loading...</div>`,
+ init(st){split(st.querySelector('.d-wave'));}},
+{cat:'text', ko:'글리치', en:'Glitch', alias:'노이즈 효과, 깨짐 효과, RGB 분리(RGB Split)',
+ desc:'화면이 깨진 듯 색이 어긋나고 잘려 보여요. 사이버·게임·스트리트 무드에 써요.',
+ dev:'::before / ::after + clip-path', hint:'자동 재생',
+ html:`<div class="d-glitch"><span data-t="GLITCH">GLITCH</span></div>`},
+{cat:'text', ko:'텍스트 채우기', en:'Text Fill', alias:'아웃라인 텍스트, 스트로크 텍스트, 텍스트 와이프',
+ desc:'외곽선만 있는 글자에 호버하면 색이 채워져요. 큰 타이포 위주의 브랜드 사이트에서 자주 써요.',
+ dev:'-webkit-text-stroke · clip-path', hint:'호버',
+ html:`<div class="d-fill" data-t="HOVER ME">HOVER ME</div>`},
+
+/* ---------- INTERACTION ---------- */
+{cat:'interaction', ko:'호버 리프트', en:'Hover Lift', alias:'떠오르기, 카드 호버, 엘리베이션(Elevation)',
+ desc:'마우스를 올리면 카드가 살짝 떠오르며 그림자가 커져요. "누를 수 있다"는 신호(어포던스)를 줘요.',
+ dev:'translateY(-8px) + box-shadow', hint:'호버',
+ html:`<div class="d-lift"><div class="th"></div><b>여름 컬렉션</b><small>24개 상품</small></div>`},
+{cat:'interaction', ko:'리플 효과', en:'Ripple Effect', alias:'물결 효과, 잉크(Ink) 효과, 터치 피드백',
+ desc:'누른 위치에서 원이 퍼져 나가요. 머티리얼 디자인의 대표적인 터치 피드백이에요.',
+ dev:'MUI ButtonBase · scale(0→1)', hint:'클릭',
+ html:`<div class="d-col"><button class="d-btn p d-ripple" style="padding:13px 28px">눌러보세요</button><div class="d-rcard d-ripple">리스트 항목도 눌러보세요</div></div>`,
+ init(st){st.querySelectorAll('.d-ripple').forEach(b=>b.addEventListener('pointerdown',e=>{const r=b.getBoundingClientRect(),s=document.createElement('span'),d=Math.max(r.width,r.height)*2.2;s.className='rp';s.style.cssText=`width:${d}px;height:${d}px;left:${e.clientX-r.left-d/2}px;top:${e.clientY-r.top-d/2}px`;b.appendChild(s);s.addEventListener('animationend',()=>s.remove());}));}},
+{cat:'interaction', ko:'마그네틱 버튼', en:'Magnetic Button', alias:'자석 효과, 커서 끌림',
+ desc:'커서가 가까이 가면 버튼이 커서 쪽으로 끌려와요. 포트폴리오·에이전시 사이트에서 자주 보여요.',
+ dev:'pointermove · translate(dx * 0.35)', hint:'근처로 호버',
+ html:`<button class="d-mag"><span>Hover me</span></button>`,
+ init(st){const b=st.querySelector('.d-mag'),t=b.querySelector('span');const reset=()=>{b.style.transform='';t.style.transform='';};st.addEventListener('pointermove',e=>{const pr=st.getBoundingClientRect(),cx=pr.left+b.offsetLeft+b.offsetWidth/2,cy=pr.top+b.offsetTop+b.offsetHeight/2,x=e.clientX-cx,y=e.clientY-cy;if(Math.hypot(x,y)<120){b.style.transform=`translate(${x*.35}px,${y*.35}px)`;t.style.transform=`translate(${x*.15}px,${y*.15}px)`;}else reset();});st.addEventListener('pointerleave',reset);}},
+{cat:'interaction', ko:'언더라인 애니메이션', en:'Underline Animation', alias:'밑줄 슬라이드, 링크 호버',
+ desc:'호버하면 밑줄이 그려져요. 왼쪽에서(from left) / 가운데서(from center) 등 시작 방향을 함께 전달하세요.',
+ dev:'::after scaleX(0→1) · transform-origin', hint:'호버',
+ html:`<div class="d-ul"><a class="l">왼쪽에서 그려지는 밑줄</a><a class="c">가운데서 퍼지는 밑줄</a></div>`},
+{cat:'interaction', ko:'3D 틸트', en:'Tilt Effect', alias:'틸트 카드, 홀로그램 카드, 3D 호버',
+ desc:'커서 위치에 따라 카드가 입체적으로 기울어지고, 빛 반사(Glare)가 따라 움직여요.',
+ dev:'perspective + rotateX/Y · vanilla-tilt.js', hint:'카드 위 호버',
+ html:`<div class="d-tilt"><small>MEMBERSHIP</small><b>PREMIUM</b><div class="gl"></div></div>`,
+ init(st){const card=st.querySelector('.d-tilt'),g=card.querySelector('.gl');card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect(),px=(e.clientX-r.left)/r.width,py=(e.clientY-r.top)/r.height;card.style.transform=`perspective(600px) rotateY(${(px-.5)*22}deg) rotateX(${(.5-py)*22}deg) scale(1.04)`;g.style.background=`radial-gradient(circle at ${px*100}% ${py*100}%,rgba(255,255,255,.5),transparent 55%)`;});card.addEventListener('pointerleave',()=>{card.style.transform='';g.style.background='transparent';});}},
+{cat:'interaction', ko:'좋아요 버스트', en:'Like Burst', alias:'하트 팝, 파티클 버스트, 컨페티',
+ desc:'하트를 누르면 쪼그라들었다 커지며 작은 파티클이 터져요. 작은 행동에 즐거움을 주는 대표적인 마이크로 인터랙션이에요.',
+ dev:'scale keyframes + particles · Lottie', hint:'♡ 클릭',
+ html:`<div class="d-likew"><button class="d-like" aria-label="좋아요"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C1 8.6 3 5 6.6 5c2.1 0 3.6 1.2 4.4 2.5h2C13.8 6.2 15.3 5 17.4 5 21 5 23 8.6 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg></button><span class="cnt">128</span></div>`,
+ init(st){const b=st.querySelector('.d-like'),n=st.querySelector('.cnt');let on=false,cnt=128;const cols=['#ff5a36','#3d5afe','#ffb547','#14b87a'];b.onclick=()=>{on=!on;cnt+=on?1:-1;n.textContent=cnt;b.classList.toggle('on',on);if(!on)return;b.querySelector('svg').animate([{transform:'scale(1)'},{transform:'scale(.6)'},{transform:'scale(1.3)'},{transform:'scale(1)'}],{duration:480,easing:'ease-out'});for(let i=0;i<10;i++){const p=document.createElement('i');p.className='pt';p.style.background=cols[i%4];const a=i/10*Math.PI*2;b.appendChild(p);p.animate([{transform:'translate(-50%,-50%) scale(1)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*36}px),calc(-50% + ${Math.sin(a)*36}px)) scale(0)`,opacity:.6}],{duration:600,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>p.remove();}};}},
+{cat:'interaction', ko:'셰이크', en:'Shake', alias:'흔들기, 에러 흔들림, 진동 효과',
+ desc:'입력이 잘못됐을 때 좌우로 흔들어 오류를 알려요. 빨간 테두리·안내 문구와 함께 써요. (정답: 1234)',
+ dev:'translateX keyframes · 400ms', hint:'확인 클릭',
+ html:`<div class="d-shake"><div class="r"><input type="password" placeholder="비밀번호"><button class="d-btn p">확인</button></div><div class="err"></div></div>`,
+ init(st){const f=st.querySelector('.d-shake'),inp=f.querySelector('input'),m=f.querySelector('.err');f.querySelector('button').onclick=()=>{if(inp.value==='1234'){f.classList.remove('bad');m.textContent='✓ 로그인 성공';m.style.color='#16a34a';return;}f.classList.add('bad');m.style.color='';m.textContent='비밀번호가 올바르지 않아요';f.animate([{transform:'translateX(0)'},{transform:'translateX(-9px)'},{transform:'translateX(9px)'},{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'translateX(-3px)'},{transform:'translateX(0)'}],{duration:420});};}},
+{cat:'interaction', ko:'펄스', en:'Pulse', alias:'핑(Ping), 맥박 효과, 라이브 표시',
+ desc:'원이 퍼지며 반복적으로 주목을 끌어요. 실시간(LIVE) 상태, 새 기능 안내, 눌러야 할 위치를 표시할 때 써요.',
+ dev:'scale + opacity · infinite', hint:'자동 재생',
+ html:`<div class="d-pulse"><span class="d-live"><span class="d-dot"></span>LIVE</span><span class="d-pbtn" style="z-index:0">+</span></div>`},
+{cat:'interaction', ko:'스포트라이트', en:'Spotlight', alias:'마우스 팔로우 글로우, 커서 조명, 보더 글로우',
+ desc:'커서를 따라 빛이 비추듯 밝은 원이 움직여요. 다크 테마의 카드·기능 소개 섹션에서 많이 써요.',
+ dev:'radial-gradient(at var(--x) var(--y))', hint:'카드 위 호버',
+ html:`<div class="d-spot"><b>Spotlight</b><p>마우스를 움직여 보세요.<br>빛이 커서를 따라와요.</p></div>`,
+ init(st){const s=st.querySelector('.d-spot');s.addEventListener('pointermove',e=>{const r=s.getBoundingClientRect();s.style.setProperty('--x',(e.clientX-r.left)+'px');s.style.setProperty('--y',(e.clientY-r.top)+'px');});}},
+{cat:'interaction', ko:'플립 카드', en:'Flip Card', alias:'카드 뒤집기, 3D 플립',
+ desc:'카드가 뒤집히며 뒷면 정보를 보여줘요. 앞면엔 이미지, 뒷면엔 설명을 두는 식으로 써요.',
+ dev:'rotateY(180deg) · backface-visibility', hint:'호버',
+ html:`<div class="d-flip"><div class="in"><div class="f"><small>FRONT</small><b>앞면</b></div><div class="b">뒷면에는 상세 설명이나 가격, 버튼을 넣을 수 있어요.</div></div></div>`},
+{cat:'interaction', ko:'커스텀 커서', en:'Custom Cursor', alias:'커서 팔로워, 마우스 커서 효과',
+ desc:'기본 화살표 대신 디자인된 커서를 써요. 바깥 원이 살짝 늦게(lerp) 따라오고, 링크 위에서는 커져요.',
+ dev:'cursor: none · lerp follow', hint:'영역 안 호버',
+ html:`<div class="d-cur"><span class="lk">WORK</span><span class="lk">ABOUT</span><i class="ring"></i><i class="cur"></i></div>`,
+ init(st,c){const a=st.querySelector('.d-cur'),dot=a.querySelector('.cur'),ring=a.querySelector('.ring');let mx=-100,my=-100,rx=-100,ry=-100;a.addEventListener('pointermove',e=>{const r=a.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top;dot.style.transform=`translate(${mx}px,${my}px)`;a.classList.toggle('big',!!e.target.closest('.lk'));});a.addEventListener('pointerleave',()=>{mx=my=-100;dot.style.transform='translate(-100px,-100px)';});c.raf(()=>{rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.transform=`translate(${rx}px,${ry}px)`;});}},
+{cat:'interaction', ko:'프레스 효과', en:'Press Feedback', alias:'탭 피드백, 눌림 효과, 스케일 다운',
+ desc:'누르는 동안 살짝 작아졌다가, 손을 떼면 통통 튀며 돌아와요. 앱 버튼의 "손맛"을 만들어요.',
+ dev:':active { transform: scale(.92) }', hint:'꾹 누르기',
+ html:`<button class="d-press">꾹 눌러보세요</button>`},
+
+{cat:'interaction', ko:'드래그 앤 드롭 정렬', en:'Drag & Drop Sort', alias:'소터블 리스트, 순서 변경, 재정렬',
+ desc:'항목을 잡고 끌어서 순서를 바꿔요. 끄는 동안 원래 자리는 점선으로 비워두고, 다른 항목들이 부드럽게 자리를 비켜줘요.',
+ dev:'dnd-kit · SortableJS · draggable', hint:'항목 드래그',
+ html:`<ul class="d-sort">${['리서치','와이어프레임','디자인 시안','개발 전달'].map((t,i)=>`<li draggable="true"><em>⋮⋮</em><b>${i+1}</b>${t}</li>`).join('')}</ul>`,
+ init(st){const L=st.querySelector('.d-sort');let drag=null;const num=()=>L.querySelectorAll('li b').forEach((b,i)=>b.textContent=i+1);L.querySelectorAll('li').forEach(li=>{li.addEventListener('dragstart',e=>{drag=li;li.classList.add('dragging');e.dataTransfer.effectAllowed='move';try{e.dataTransfer.setData('text/plain','');}catch(_){}});li.addEventListener('dragend',()=>{li.classList.remove('dragging');drag=null;num();});});L.addEventListener('dragover',e=>{e.preventDefault();if(!drag)return;const after=[...L.querySelectorAll('li:not(.dragging)')].find(x=>{const r=x.getBoundingClientRect();return e.clientY<r.top+r.height/2;});const first=new Map([...L.children].map(x=>[x,x.getBoundingClientRect().top]));if(after){if(after.previousElementSibling!==drag)L.insertBefore(drag,after);}else if(L.lastElementChild!==drag)L.appendChild(drag);[...L.children].forEach(x=>{if(x===drag)return;const d=first.get(x)-x.getBoundingClientRect().top;if(d)x.animate([{transform:`translateY(${d}px)`},{transform:'none'}],{duration:180,easing:'ease-out'});});});}},
+{cat:'interaction', ko:'이미지 비교 슬라이더', en:'Before / After Slider', alias:'비포 애프터, 이미지 비교, 컴페어 슬라이더',
+ desc:'가운데 손잡이를 좌우로 끌어 두 이미지를 겹쳐 비교해요. 보정 전후, 리뉴얼 전후를 보여줄 때 써요.',
+ dev:'clip-path: inset() · range input', hint:'좌우로 드래그',
+ html:`<div class="d-ba" style="--p:50%"><div class="im bf"><b>BEFORE</b></div><div class="im af"><b>AFTER</b></div><div class="hd"><i>⟷</i></div><input type="range" min="0" max="100" value="50" aria-label="비교"></div>`,
+ init(st,c){const w=st.querySelector('.d-ba'),r=w.querySelector('input');let user=false;const set=v=>{w.style.setProperty('--p',v+'%');};r.oninput=()=>{user=true;set(r.value);};let t0;c.raf(t=>{if(user)return false;if(t0===undefined)t0=t;const p=(t-t0)/1800;if(p>=1){set(50);r.value=50;return false;}const v=50+Math.sin(p*Math.PI*2)*28;set(v);r.value=v;});}},
+{cat:'interaction', ko:'호버 줌', en:'Hover Zoom', alias:'이미지 확대 호버, 썸네일 줌, 캡션 슬라이드',
+ desc:'마우스를 올리면 프레임은 그대로 두고 안의 이미지만 살짝 확대돼요. 아래에서 캡션이 함께 올라오기도 해요.',
+ dev:'overflow: hidden + scale(1.1)', hint:'호버',
+ html:`<div class="d-zoom"><div class="img"></div><div class="cap"><b>Summer Collection</b><small>자세히 보기 →</small></div></div>`},
+{cat:'interaction', ko:'복사 버튼 피드백', en:'Copy Feedback', alias:'클립보드 복사, 복사 완료 표시',
+ desc:'복사 아이콘을 누르면 체크 표시로 바뀌고 "복사됨!"이 잠깐 떠요. 누른 결과를 그 자리에서 바로 확인시켜 줘요.',
+ dev:'navigator.clipboard.writeText()', hint:'복사 아이콘 클릭',
+ html:`<div class="d-copyw"><code>npm install motion</code><button class="d-cp" aria-label="복사"><span class="a"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg></span><span class="b"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12l5 5 9-10"/></svg></span></button><em class="tipc">복사됨!</em></div>`,
+ init(st,c){const b=st.querySelector('.d-cp'),t=st.querySelector('.tipc');b.onclick=async()=>{try{await navigator.clipboard.writeText('npm install motion');}catch(e){}b.classList.add('ok');t.classList.add('show');clearTimeout(b._h);b._h=setTimeout(()=>{b.classList.remove('ok');t.classList.remove('show');},1500);};}},
+
+/* ---------- PAGE ---------- */
+{cat:'page', ko:'페이드', en:'Fade', alias:'크로스 페이드(Cross-fade), 디졸브(Dissolve)',
+ desc:'이전 화면이 사라지고 새 화면이 겹치며 나타나요. 가장 기본적이고 무난한 전환이에요.',
+ dev:'opacity · View Transitions API', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('fade')},
+{cat:'page', ko:'슬라이드', en:'Slide (Push)', alias:'푸시 전환, 수평 슬라이드',
+ desc:'새 화면이 옆에서 들어오며 이전 화면을 밀어내요. 두 화면이 함께 움직이는 게 특징이에요.',
+ dev:'translateX(100% → 0)', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('slide')},
+{cat:'page', ko:'커버', en:'Cover', alias:'스택 전환, iOS 푸시, 오버레이 슬라이드',
+ desc:'새 화면이 이전 화면 위를 덮으며 들어오고, 뒤 화면은 조금만 밀리며 어두워져요. iOS 앱의 기본 화면 이동 방식이에요.',
+ dev:'z-index + translateX(-30%) + dim', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('cover')},
+{cat:'page', ko:'줌', en:'Zoom (Scale)', alias:'스케일 전환, 확대 전환',
+ desc:'이전 화면은 커지며 사라지고, 새 화면은 작게 시작해 제 크기가 돼요. 안쪽으로 들어가는 듯한 깊이감을 줘요.',
+ dev:'scale(.82 → 1) + opacity', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('zoom')},
+{cat:'page', ko:'플립', en:'Flip', alias:'3D 회전 전환, 카드 플립 전환',
+ desc:'화면이 카드처럼 세로축(Y축)을 중심으로 뒤집혀요. 앞/뒷면 개념이 있는 화면에 어울려요.',
+ dev:'rotateY · perspective', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('flip')},
+{cat:'page', ko:'와이프', en:'Wipe', alias:'닦아내기, 클립 리빌(Clip Reveal)',
+ desc:'새 화면이 한쪽 끝부터 걷히듯 드러나요. 이전 화면은 움직이지 않아요.',
+ dev:'clip-path: inset()', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('wipe')},
+{cat:'page', ko:'서클 리빌', en:'Circle Reveal', alias:'원형 확장, 아이리스(Iris) 전환, 리플 전환',
+ desc:'누른 버튼 위치에서 원이 퍼지며 새 화면이 드러나요. 누른 곳과 결과를 자연스럽게 이어줘요.',
+ dev:'clip-path: circle()', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('circle')},
+{cat:'page', ko:'블러 전환', en:'Blur Transition', alias:'블러 크로스페이드, 포커스 전환',
+ desc:'이전 화면은 흐려지며 사라지고, 새 화면은 흐릿하게 나타났다 또렷해져요.',
+ dev:'filter: blur() + opacity', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('blur')},
+{cat:'page', ko:'커튼 전환', en:'Curtain Transition', alias:'오버레이 전환, 패널 와이프, 셔터 전환',
+ desc:'색 패널이 화면을 덮었다가 걷히는 사이에 페이지가 바뀌어요. 브랜드·포트폴리오 사이트의 페이지 이동에 자주 써요.',
+ dev:'Barba.js · GSAP timeline', hint:'자동 재생 · 버튼 클릭', html:PHONE, init:pageInit('curtain')},
+{cat:'page', ko:'공유 요소 전환', en:'Shared Element Transition', alias:'히어로(Hero) 애니메이션, 모핑 전환, 매직 무브',
+ desc:'목록의 썸네일이 그대로 커지며 상세 화면이 돼요. 두 화면이 같은 요소로 연결돼 맥락이 끊기지 않아요.',
+ dev:'View Transitions API · FLIP · layoutId', hint:'자동 재생 · 카드 클릭',
+ html:`<div class="d-browser">${BBAR}<div class="d-phone pcvp"><div class="pg a">${NAVL}<div class="se-grid pc4"><div class="se-card" style="background:#ff8a65"></div><div class="se-card" style="background:#7c9cff"></div><div class="se-card" style="background:#5fd3a8"></div><div class="se-card" style="background:#ffd166"></div></div><i></i><i style="width:60%"></i></div></div></div>`,
+ init(st,c){const ph=st.querySelector('.d-phone'),cards=[...ph.querySelectorAll('.se-card')];let open=null,busy=false;const E='cubic-bezier(.6,0,.2,1)';
+  const openCard=card=>{if(open||busy)return;busy=true;const pr=ph.getBoundingClientRect(),r=card.getBoundingClientRect(),bl=ph.clientLeft,bt=ph.clientTop;const d=document.createElement('div');d.className='se-detail';d.innerHTML='<div class="se-hero"></div><div class="se-body"><b>상세 화면</b><i></i><i style="width:80%"></i><i style="width:55%"></i><button class="pg-go">← 닫기</button></div>';const h=d.querySelector('.se-hero'),body=d.querySelector('.se-body');h.style.background=card.style.background;ph.appendChild(d);const W=ph.clientWidth,H=ph.clientHeight;const from={left:(r.left-pr.left-bl)+'px',top:(r.top-pr.top-bt)+'px',width:r.width+'px',height:r.height+'px',borderRadius:'10px'},to={left:'0px',top:'0px',width:W+'px',height:H*.48+'px',borderRadius:'0px'};card.style.visibility='hidden';h.animate([from,to],{duration:520,easing:E,fill:'forwards'}).onfinish=()=>{busy=false;};d.animate([{background:'rgba(255,255,255,0)'},{background:'rgba(255,255,255,1)'}],{duration:300,fill:'forwards'});body.animate([{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'none'}],{duration:320,delay:320,fill:'both'});open={d,h,card,from,to,body};d.querySelector('.pg-go').onclick=close;};
+  const close=()=>{if(!open||busy)return;busy=true;const {d,h,card,from,to,body}=open;open=null;body.animate([{opacity:1},{opacity:0}],{duration:150,fill:'forwards'});d.animate([{background:'rgba(255,255,255,1)'},{background:'rgba(255,255,255,0)'}],{duration:380,delay:120,fill:'forwards'});h.animate([to,from],{duration:480,delay:80,easing:E,fill:'forwards'}).onfinish=()=>{card.style.visibility='';d.remove();busy=false;};};
+  cards.forEach(cd=>cd.onclick=()=>openCard(cd));c.after(()=>openCard(cards[1]),800);c.after(close,2700);}},
+
+/* ---------- SCROLL ---------- */
+{cat:'scroll', ko:'스크롤 리빌', en:'Scroll Reveal', alias:'스크롤 등장 효과, 인뷰(In-view) 애니메이션, 스크롤 트리거',
+ desc:'요소가 화면에 들어올 때 나타나요. 몇 % 보였을 때 시작할지(threshold), 한 번만 재생할지(once) 함께 정해 주세요.',
+ dev:'IntersectionObserver · AOS · ScrollTrigger', hint:'스크롤', full:true,
+ html:`<div class="sc">${filler(10,'카드').replace(/sc-blk/g,'sc-blk rv')}</div>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc');const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('in',e.isIntersecting)),{root:sc,threshold:.3});sc.querySelectorAll('.rv').forEach(x=>io.observe(x));}},
+{cat:'scroll', ko:'패럴랙스', en:'Parallax', alias:'시차 스크롤, 패럴랙스 스크롤링',
+ desc:'레이어마다 스크롤 속도가 달라서 깊이감이 생겨요. 멀리 있는 배경일수록 느리게, 가까운 요소일수록 빠르게 움직여요.',
+ dev:'translateY(scrollY × speed)', hint:'스크롤', full:true,
+ html:`<div class="sc"><div class="px"><div class="sky" data-sp=".75"><i class="sun"></i></div><h4 data-sp=".9">PARALLAX</h4><svg class="h1" data-sp=".45" viewBox="0 0 300 100" preserveAspectRatio="none"><path d="M0 55 Q60 5 130 45 T300 30 V100 H0Z" fill="#8aa6f0"/></svg><svg class="h2" data-sp=".15" viewBox="0 0 300 100" preserveAspectRatio="none"><path d="M0 50 Q90 0 170 50 T300 45 V100 H0Z" fill="#3d5afe"/></svg></div>${filler(6)}</div>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc'),L=[...sc.querySelectorAll('[data-sp]')];sc.addEventListener('scroll',()=>{const y=sc.scrollTop;L.forEach(l=>l.style.transform=`translateY(${y*l.dataset.sp}px)`);},{passive:true});}},
+{cat:'scroll', ko:'스티키 헤더', en:'Sticky Header', alias:'고정 헤더, 축소 헤더(Shrink Header), 플로팅 헤더',
+ desc:'스크롤해도 상단에 붙어 있어요. 스크롤을 시작하면 높이가 줄고 그림자가 생기는 형태가 흔해요.',
+ dev:'position: sticky; top: 0', hint:'스크롤', full:true,
+ html:`<div class="sc"><div class="sh">LOGO<span><i></i><i></i><i></i></span></div>${filler(8)}</div>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc'),h=sc.querySelector('.sh');sc.addEventListener('scroll',()=>h.classList.toggle('small',sc.scrollTop>16),{passive:true});}},
+{cat:'scroll', ko:'스크롤 진행 바', en:'Scroll Progress Bar', alias:'읽기 진행률, 리딩 프로그레스(Reading Progress)',
+ desc:'글을 얼마나 읽었는지 상단 막대로 보여줘요. 긴 아티클·블로그·약관 페이지에 써요.',
+ dev:'scrollTop / (scrollHeight − clientHeight)', hint:'스크롤', full:true,
+ html:`<div class="pbar"><i></i></div><div class="sc"><div class="art"><h4>긴 아티클 제목</h4>${'<i></i><i style="width:92%"></i><i style="width:80%"></i><i></i><i style="width:60%"></i><br>'.repeat(5)}</div></div>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc'),b=st.querySelector('.pbar i');sc.addEventListener('scroll',()=>{b.style.width=(sc.scrollTop/(sc.scrollHeight-sc.clientHeight)*100)+'%';},{passive:true});}},
+{cat:'scroll', ko:'스크롤 스냅', en:'Scroll Snap', alias:'풀페이지 스크롤, 섹션 스냅, 원페이지 스크롤',
+ desc:'스크롤을 멈추면 섹션 단위로 딱 맞춰 정렬돼요. 풀스크린 섹션으로 구성된 원페이지 사이트에 써요.',
+ dev:'scroll-snap-type: y mandatory · fullPage.js', hint:'스크롤', full:true,
+ html:`<div class="sc snap"><section style="background:#3d5afe">01</section><section style="background:#ff5a36">02</section><section style="background:#16161a">03</section><section style="background:#14b87a">04</section></div>${SC_HINT}`},
+{cat:'scroll', ko:'가로 스크롤', en:'Horizontal Scroll', alias:'수평 스크롤, 카드 리스트 스와이프',
+ desc:'목록을 옆으로 넘겨 봐요. 다음 카드가 살짝 보이게(Peek) 하면 더 넘길 수 있다는 걸 알려줄 수 있어요.',
+ dev:'overflow-x: auto · scroll-snap-type: x', hint:'휠 / 드래그 / 스와이프', full:true,
+ html:`<div class="hsc"><div style="background:#3d5afe">추천 01</div><div style="background:#ff5a36">추천 02</div><div style="background:#16161a">추천 03</div><div style="background:#14b87a">추천 04</div><div style="background:#9b5cff">추천 05</div><div style="background:#ffb547">추천 06</div></div>`,
+ init(st){const h=st.querySelector('.hsc');h.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){h.scrollLeft+=e.deltaY;e.preventDefault();}},{passive:false});}},
+{cat:'scroll', ko:'스마트 헤더', en:'Hide on Scroll', alias:'숨김 헤더, 오토 하이드 헤더, 헤드룸(Headroom)',
+ desc:'아래로 스크롤하면 헤더가 숨고, 조금이라도 위로 올리면 다시 나타나요. 읽는 영역을 넓게 쓸 수 있어요.',
+ dev:'Headroom.js · scroll direction', hint:'아래 ↓ 위 ↑ 스크롤', full:true,
+ html:`<div class="sc"><div class="sh smart">LOGO<span><i></i><i></i><i></i></span></div>${filler(10)}</div>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc'),h=sc.querySelector('.sh');let last=0;sc.addEventListener('scroll',()=>{const y=sc.scrollTop;if(Math.abs(y-last)<3)return;h.classList.toggle('hide',y>last&&y>50);last=y;},{passive:true});}},
+{cat:'scroll', ko:'무한 스크롤', en:'Infinite Scroll', alias:'자동 더보기, 레이지 로딩(Lazy Loading), 피드 로딩',
+ desc:'목록 끝에 닿으면 다음 콘텐츠를 자동으로 불러와요. SNS 피드처럼 끝없이 둘러보는 서비스에 써요.',
+ dev:'IntersectionObserver · fetchNextPage', hint:'끝까지 스크롤', full:true,
+ html:`<div class="sc"><div class="ilist"></div><div class="ild"><div class="d-spin" style="width:22px;height:22px;border-width:3px"></div></div></div>${SC_HINT}`,
+ init(st,c){const sc=st.querySelector('.sc'),list=sc.querySelector('.ilist'),ld=sc.querySelector('.ild');let n=0,busy=false;const add=k=>{for(let i=0;i<k;i++){n++;const d=document.createElement('div');d.className='irow';d.innerHTML=`<i></i><span>게시물 #${n}</span>`;list.appendChild(d);d.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:300,delay:i*40,fill:'both'});}};add(6);sc.addEventListener('scroll',()=>{if(busy||n>=60)return;if(sc.scrollTop+sc.clientHeight>sc.scrollHeight-24){busy=true;ld.classList.add('on');c.after(()=>{add(6);ld.classList.remove('on');busy=false;},800);}},{passive:true});}},
+{cat:'scroll', ko:'맨 위로 버튼', en:'Back to Top', alias:'탑 버튼, 스크롤 투 탑(Scroll to Top)',
+ desc:'어느 정도 스크롤하면 나타나고, 누르면 부드럽게 맨 위로 올라가요.',
+ dev:'scrollTo({ top: 0, behavior: "smooth" })', hint:'스크롤 후 ↑ 클릭', full:true,
+ html:`<div class="sc">${filler(10)}</div><button class="btt" aria-label="맨 위로">↑</button>${SC_HINT}`,
+ init(st){const sc=st.querySelector('.sc'),b=st.querySelector('.btt');sc.addEventListener('scroll',()=>b.classList.toggle('show',sc.scrollTop>90),{passive:true});b.onclick=()=>sc.scrollTo({top:0,behavior:'smooth'});}},
+
+/* ---------- LOADING ---------- */
+{cat:'loading', ko:'스켈레톤 UI', en:'Skeleton', alias:'스켈레톤 로딩, 플레이스홀더, 고스트 UI, 쉬머(Shimmer)',
+ desc:'실제 콘텐츠가 올 자리에 회색 뼈대를 먼저 보여줘요. 그 위를 지나가는 빛은 쉬머(Shimmer)라고 불러요. 스피너보다 체감 대기 시간이 짧아요.',
+ dev:'Skeleton · shimmer gradient', hint:'자동 반복',
+ html:`<div class="d-skel"><div class="ly sk"><div class="av"></div><div class="tx"><i style="width:60%"></i><i></i><i style="width:80%"></i></div></div><div class="ly real"><div class="av"></div><div class="tx"><b>김디자인</b><small>스켈레톤이 끝나면 실제 콘텐츠가 같은 자리에 나타나요.</small></div></div></div>`,
+ init(st,c){const k=st.querySelector('.d-skel');c.every(()=>k.classList.toggle('loaded'),2200);}},
+{cat:'loading', ko:'스피너', en:'Spinner', alias:'로딩 인디케이터, 로더(Loader), 뺑뺑이',
+ desc:'끝을 알 수 없는 짧은 대기에 써요. 왼쪽은 링(Ring) 스피너, 오른쪽은 iOS 스타일 스포크(Spokes) 스피너예요.',
+ dev:'border-top-color + rotate infinite', hint:'자동 재생',
+ html:`<div class="d-row" style="gap:40px"><div class="d-spin"></div><div class="d-spokes"></div></div>`,
+ init(st){const s=st.querySelector('.d-spokes');for(let i=0;i<12;i++){const x=document.createElement('i');x.style.transform=`rotate(${i*30}deg)`;x.style.animationDelay=(-1+i/12)+'s';s.appendChild(x);}}},
+{cat:'loading', ko:'프로그레스 바', en:'Progress Bar', alias:'진행 막대, 로딩 바, 로딩 게이지',
+ desc:'진행률을 알 때는 확정형(Determinate), 모를 때는 계속 흐르는 비확정형(Indeterminate)을 써요.',
+ dev:'<progress> · determinate / indeterminate', hint:'자동 재생',
+ html:`<div class="d-pb"><div class="lb"><span>Determinate</span><span class="pb-t">0%</span></div><div class="bar pb-det"><i></i></div><div class="lb" style="margin-top:14px"><span>Indeterminate</span><span>…</span></div><div class="bar pb-ind"><i></i></div></div>`,
+ init(st,c){const b=st.querySelector('.pb-det i'),t=st.querySelector('.pb-t');let p=0,hold=0;c.every(()=>{if(p>=100){if(++hold<5)return;p=0;hold=0;}else p=Math.min(100,p+Math.random()*12);b.style.width=p+'%';t.textContent=Math.round(p)+'%';},250);}},
+{cat:'loading', ko:'도트 로더', en:'Dot Loader', alias:'점 로딩, 타이핑 인디케이터(Typing Indicator)',
+ desc:'점 세 개가 차례로 튀어요. 채팅에서 "상대방이 입력 중…"을 나타낼 때도 써요.',
+ dev:'stagger bounce · 150ms delay', hint:'자동 재생',
+ html:`<div class="d-dots"><i></i><i></i><i></i></div>`},
+{cat:'loading', ko:'원형 프로그레스', en:'Circular Progress', alias:'프로그레스 링, 도넛 게이지',
+ desc:'원 둘레를 따라 진행률을 보여줘요. 업로드 진행, 목표 달성률 등에 써요.',
+ dev:'SVG stroke-dashoffset', hint:'↻ 재생',
+ html:`<div class="d-ring"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="40"/><circle class="fg" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="251.3"/></svg><b>0%</b></div>`,
+ init(st,c){const fg=st.querySelector('.fg'),b=st.querySelector('b'),to=72,d=1500;let t0;c.raf(t=>{if(t0===undefined)t0=t;const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3),v=to*e;fg.setAttribute('stroke-dashoffset',251.3*(1-v/100));b.textContent=Math.round(v)+'%';return p<1;});}},
+{cat:'loading', ko:'성공 체크', en:'Success Checkmark', alias:'완료 애니메이션, 체크 드로우, 라인 드로잉',
+ desc:'원과 체크 표시가 선으로 그려지며 완료를 알려요. 선이 그려지는 기법을 라인 드로잉(Line Drawing)이라고 해요.',
+ dev:'stroke-dasharray / dashoffset · Lottie', hint:'↻ 재생',
+ html:`<div class="d-ok"><svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34"/><path d="M25 41 l10 10 l20 -22"/></svg><b>결제가 완료됐어요</b></div>`},
+{cat:'loading', ko:'엠티 스테이트', en:'Empty State', alias:'빈 화면, 데이터 없음, 제로 스테이트(Zero State)',
+ desc:'보여줄 데이터가 없을 때의 화면이에요. 왜 비었는지와 다음에 할 행동(CTA)을 함께 알려주세요. 검색 결과 없음, 첫 사용 상태 등.',
+ dev:'EmptyState · illustration + CTA',
+ html:`<div class="d-empty"><svg viewBox="0 0 64 64" fill="none" stroke="#a3a29b" stroke-width="2.5" stroke-linejoin="round"><path d="M8 24 L32 12 L56 24 L32 36 Z"/><path d="M8 24 V44 L32 56 V36"/><path d="M56 24 V44 L32 56"/></svg><b>아직 저장한 항목이 없어요</b><p>마음에 드는 상품을 저장해 보세요</p><button class="d-btn p">둘러보기</button></div>`},
+{cat:'loading', ko:'로딩 버튼', en:'Loading Button', alias:'버튼 상태 전환, 비동기 버튼, 프로그레스 버튼',
+ desc:'누르면 버튼 안에 로딩 표시 → 완료 표시로 바뀌어요. 처리 중에는 눌리지 않게 해서 중복 요청도 막아줘요.',
+ dev:'disabled + aria-busy="true"', hint:'클릭',
+ html:`<button class="d-lbtn">저장하기</button>`,
+ init(st,c){const b=st.querySelector('.d-lbtn');let s=0;b.onclick=()=>{if(s)return;s=1;b.className='d-lbtn loading';b.innerHTML='<i class="sp"></i>저장 중…';c.after(()=>{b.className='d-lbtn done';b.textContent='✓ 저장 완료';c.after(()=>{b.className='d-lbtn';b.textContent='저장하기';s=0;},1500);},1500);};}},
+
+/* ---------- EASING ---------- */
+easeItem({ko:'리니어', en:'Linear', alias:'등속, 일정한 속도', css:'linear', bez:[0,0,1,1],
+ desc:'처음부터 끝까지 같은 속도로 움직여요. 기계적인 느낌이라 UI 이동보다는 회전, 마퀴, 프로그레스 바에 써요.'}),
+easeItem({ko:'이즈', en:'Ease', alias:'CSS 기본값', css:'ease', bez:[.25,.1,.25,1],
+ desc:'CSS의 기본값이에요. 빠르게 시작해 천천히 끝나요. 이징을 따로 지정하지 않으면 이 값이 적용돼요.'}),
+easeItem({ko:'이즈 인', en:'Ease-in', alias:'가속, 천천히 시작', css:'ease-in', bez:[.42,0,1,1],
+ desc:'천천히 출발해 점점 빨라지며 끝나요. 화면 밖으로 사라지는(퇴장) 요소에 어울려요.'}),
+easeItem({ko:'이즈 아웃', en:'Ease-out', alias:'감속, 천천히 멈춤', css:'ease-out', bez:[0,0,.58,1],
+ desc:'빠르게 출발해 부드럽게 멈춰요. 화면에 들어오는(등장) 요소에 가장 많이 써요.'}),
+easeItem({ko:'이즈 인 아웃', en:'Ease-in-out', alias:'가속 후 감속', css:'ease-in-out', bez:[.42,0,.58,1],
+ desc:'천천히 출발 → 빨라짐 → 천천히 멈춤. 화면 안에서 A 지점에서 B 지점으로 이동하는 요소에 써요.'}),
+easeItem({ko:'익스포 아웃', en:'Expo Out', alias:'easeOutExpo, 쫀득한 이징, 강한 감속', css:'cubic-bezier(0.16, 1, 0.3, 1)', bez:[.16,1,.3,1],
+ desc:'처음엔 아주 빠르고 끝에서 길게 감속해요. 세련되고 "쫀득한" 느낌이라 모던한 UI·브랜드 사이트에서 자주 써요.'}),
+easeItem({ko:'백 (오버슈트)', en:'Back / Overshoot', alias:'easeOutBack, 탄성, 튕김', css:'cubic-bezier(0.34, 1.56, 0.64, 1)', bez:[.34,1.56,.64,1], label:'Back',
+ desc:'목표 지점을 살짝 지나쳤다가 돌아와요. 버튼·모달·토스트 등장에 생동감을 줘요.'}),
+easeItem({ko:'스프링', en:'Spring', alias:'용수철, 물리 기반 애니메이션', fn:spring, devOverride:'transition: { type: "spring", stiffness, damping }',
+ desc:'용수철처럼 몇 번 출렁이다가 멈춰요. 물리 기반이라 자연스러워요. 강도(stiffness)와 감쇠(damping) 값으로 조절해요.'}),
+easeItem({ko:'바운스', en:'Bounce', alias:'easeOutBounce, 통통 튀기', fn:bounce,
+ desc:'바닥에 떨어진 공처럼 통통 튀다가 멈춰요. 장난스럽고 캐주얼한 톤에 어울려요.'}),
+easeItem({ko:'스텝', en:'Steps', alias:'계단식, 프레임 단위', css:'steps(5)', fn:t=>Math.min(1,Math.floor(t*5)/5+(t>=1?0:0)),
+ desc:'부드럽게 이어지지 않고 칸칸이 끊어서 움직여요. 스프라이트 애니메이션, 깜빡이는 커서, 레트로 느낌에 써요.'}),
+
+/* ---------- LAYOUT ---------- */
+{cat:'layout', ko:'GNB · LNB', en:'Global / Local Navigation', alias:'글로벌 내비게이션 바, 로컬 내비게이션 바, 헤더 메뉴, 사이드 메뉴',
+ desc:'GNB는 모든 페이지 상단에 공통으로 있는 메인 메뉴, LNB는 특정 섹션 안의 하위 메뉴(주로 왼쪽)예요. SNB(Side Navigation Bar)라고도 해요.',
+ dev:'<header> · <nav> · <aside>',
+ html:`<div class="wf" style="grid-template:'g g' 34px 'l c' 1fr / 74px 1fr"><div class="b ac" style="grid-area:g;justify-content:space-between;padding:0 10px"><span>LOGO</span><span>메뉴1 · 메뉴2 · 메뉴3</span><span class="lbl" style="left:54px;top:-9px">GNB</span></div><div class="b ac" style="grid-area:l;flex-direction:column;gap:6px;padding:8px"><span class="ln-s" style="width:100%"></span><span class="ln-s" style="width:100%"></span><span class="ln-s" style="width:100%"></span><span class="lbl o" style="left:4px;bottom:6px">LNB</span></div><div class="b" style="grid-area:c">콘텐츠 영역</div></div>`},
+{cat:'layout', ko:'히어로 섹션', en:'Hero Section', alias:'키 비주얼(KV), 메인 비주얼, 빅 배너',
+ desc:'첫 화면 상단의 가장 큰 영역이에요. 헤드카피 + 서브카피 + CTA 버튼 + 비주얼로 구성해요.',
+ dev:'<section class="hero">',
+ html:`<div class="wf" style="grid-template-rows:22px 1fr"><div class="b">GNB</div><div class="b ac" style="justify-content:flex-start;gap:12px;padding:12px"><div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:flex-start"><span style="font:900 14px 'Noto Sans KR';color:var(--ink)">헤드카피</span><span class="ln-s" style="width:90%"></span><span class="ln-s" style="width:70%"></span><span style="margin-top:4px;background:var(--accent);color:#fff;padding:4px 8px;border-radius:5px">CTA</span></div><div class="b" style="width:42%;height:85%">비주얼</div><span class="lbl" style="left:6px;bottom:6px">HERO</span></div></div>`},
+{cat:'layout', ko:'그리드 시스템', en:'Grid System', alias:'12단 그리드, 컬럼 그리드, 거터 · 마진',
+ desc:'화면을 세로 단(Column)으로 나눈 배치 기준이에요. 단 사이 간격은 거터(Gutter), 바깥 여백은 마진(Margin)이라고 불러요.',
+ dev:'grid-template-columns: repeat(12, 1fr); gap',
+ html:`<div style="position:relative;width:100%;height:100%"><div class="cols12">${'<i></i>'.repeat(12)}</div><span class="lbl" style="left:20px;top:14px">Column</span><span class="lbl o" style="left:-2px;bottom:14px">Margin</span><span class="lbl" style="right:18px;bottom:14px;background:#16161a">Gutter ↔</span></div>`},
+{cat:'layout', ko:'벤토 그리드', en:'Bento Grid', alias:'벤토 레이아웃, 타일 레이아웃',
+ desc:'도시락(벤토) 칸처럼 크기가 다른 타일을 조합한 레이아웃이에요. 기능 소개 섹션에서 많이 써요.',
+ dev:'grid-column: span 2 · grid-row: span 2',
+ html:`<div class="wf" style="grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(3,1fr)"><div class="b ac" style="grid-column:span 2;grid-row:span 2">2×2</div><div class="b">1×1</div><div class="b" style="grid-row:span 2">1×2</div><div class="b">1×1</div><div class="b" style="grid-column:span 3">3×1</div><div class="b">1×1</div></div>`},
+{cat:'layout', ko:'메이슨리', en:'Masonry', alias:'핀터레스트 레이아웃, 벽돌 쌓기',
+ desc:'높이가 서로 다른 카드를 빈틈없이 벽돌처럼 쌓아요. 이미지 갤러리, 무드보드에 써요.',
+ dev:'columns: 3 · Masonry.js',
+ html:`<div style="width:100%;height:100%;columns:4;column-gap:6px;overflow:hidden">${[60,90,46,74,52,96,40,70,84,50,66,44].map((h,i)=>`<div class="wf" style="height:auto;display:block;break-inside:avoid;margin-bottom:6px"><div class="b ${i%5===1?'ac':''}" style="height:${h}px"></div></div>`).join('')}</div>`},
+{cat:'layout', ko:'스플릿 스크린', en:'Split Screen', alias:'분할 레이아웃, 50:50 레이아웃, 투 컬럼',
+ desc:'화면을 좌우로 나눠 이미지와 텍스트를 나란히 배치해요. 비교하거나 두 가지 선택지를 보여줄 때도 써요.',
+ dev:'grid-template-columns: 1fr 1fr',
+ html:`<div class="wf" style="grid-template-columns:1fr 1fr"><div class="b ac">이미지</div><div class="b" style="flex-direction:column;align-items:flex-start;gap:6px;padding:12px"><span style="font:900 13px 'Noto Sans KR';color:var(--ink)">타이틀</span><span class="ln-s" style="width:100%"></span><span class="ln-s" style="width:80%"></span><span class="ln-s" style="width:60%"></span></div></div>`},
+{cat:'layout', ko:'리스트 · 그리드 뷰', en:'List / Grid View', alias:'목록형 · 바둑판형, 보기 방식 전환',
+ desc:'같은 데이터를 목록형(List)과 바둑판형(Grid)으로 바꿔 볼 수 있어요. 버튼을 눌러 비교해 보세요.',
+ dev:'view="list" | "grid"', hint:'클릭',
+ html:`<div class="lv"><div class="bar"><button class="on" data-v="grid">▦ 그리드</button><button data-v="list">☰ 리스트</button></div><div class="items">${'<div><i></i><span class="ln-s"></span></div>'.repeat(6)}</div></div>`,
+ init(st){const lv=st.querySelector('.lv'),bs=lv.querySelectorAll('button');bs.forEach(b=>b.onclick=()=>{bs.forEach(x=>x.classList.toggle('on',x===b));lv.classList.toggle('list',b.dataset.v==='list');});}},
+{cat:'layout', ko:'카드 구성', en:'Card Anatomy', alias:'카드 UI, 카드 컴포넌트 구조',
+ desc:'카드는 보통 썸네일(Thumbnail) · 제목(Title) · 메타 정보(Meta) · 액션(CTA)으로 이뤄져요. 부분 명칭을 맞춰 두면 수정 요청이 쉬워요.',
+ dev:'Card · CardMedia · CardContent · CardActions',
+ html:`<div style="position:relative;width:170px;background:#fff;border-radius:12px;padding:8px;border:1.5px solid #d3d1c9"><div style="height:70px;border-radius:8px;background:#dfe4ff"></div><div style="font-size:12px;font-weight:700;margin:7px 0 3px">카드 제목</div><div style="font-size:10px;color:var(--muted)">2026.11 · 조회 1.2k</div><div style="margin-top:7px;font-size:10.5px;background:var(--ink);color:#fff;border-radius:5px;padding:4px;text-align:center">자세히 보기</div><span class="lbl" style="left:-36px;top:30px">Thumbnail</span><span class="lbl" style="right:-30px;top:84px">Title</span><span class="lbl o" style="left:-26px;top:104px">Meta</span><span class="lbl" style="right:-24px;bottom:8px;background:#16161a">CTA</span></div>`},
+{cat:'layout', ko:'퍼스트 뷰', en:'Above the Fold', alias:'첫 화면, 폴드 위, 퍼스트 뷰(First View)',
+ desc:'스크롤하지 않고 처음 보이는 영역이에요. 폴드(Fold) 아래는 스크롤해야 보여요. 핵심 메시지와 CTA는 폴드 위에 두세요.',
+ dev:'100vh · 100dvh',
+ html:`<div style="position:relative;width:200px;height:100%;"><div class="wf" style="grid-template-rows:20px 70px 34px 34px 34px;height:auto"><div class="b">GNB</div><div class="b ac">핵심 메시지 + CTA</div><div class="b">섹션 2</div><div class="b" style="opacity:.5">섹션 3</div><div class="b" style="opacity:.35">섹션 4</div></div><div style="position:absolute;left:-14px;right:-14px;top:118px;border-top:2px dashed var(--accent-2)"></div><span class="lbl o" style="right:-20px;top:108px">FOLD</span><span class="lbl" style="left:-20px;top:6px">Above the fold</span></div>`},
+];
+
+const MODE='PC';
+const ALL_DESC='웹사이트(PC)에서 쓰는 UI·모션·레이아웃 명칭을 한 번에 모았어요. 왼쪽 메뉴에서 카테고리를 골라 좁혀 보세요.';
+const STAGE=it=>`<div class="stage-inner ${it.full?'full':''}"></div>`;
+function MOUNT(a,it){const st=a.querySelector('.stage-inner');const c=ctx(st);st.innerHTML=it.html;try{it.init&&it.init(st,c);}catch(e){console.error(it.en,e);}}
+/* ===== rendering (shared PC/MO shell) ===== */
+const $=s=>document.querySelector(s);
+const nav=$('#nav'),grid=$('#grid'),q=$('#q');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+let current=CATS[0].id;
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._h);toast._h=setTimeout(()=>t.classList.remove('show'),1600);}
+async function copyText(t){try{await navigator.clipboard.writeText(t);return true;}catch(e){}try{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok;}catch(e){return false;}}
+function makeCard(it,showCat){
+  const a=document.createElement('article');a.className='card';const cat=CATS.find(c=>c.id===it.cat);
+  a.innerHTML=`<div class="stage">${STAGE(it)}${it.hint?`<span class="hint">${it.hint}</span>`:''}<button class="replay" title="다시 재생" aria-label="다시 재생">↻</button></div>
+  <div class="meta">${showCat?`<span class="cattag">${cat.ko}</span>`:''}<div class="names"><h3>${it.ko}</h3><span class="en">${it.en}</span></div>${it.alias?`<p class="alias">= ${it.alias}</p>`:''}<p class="desc">${it.desc}</p>
+  <div class="foot">${it.dev?`<code class="dev" title="${esc(it.dev)}">${esc(it.dev)}</code>`:'<span style="flex:1"></span>'}<button class="copy">명칭 복사</button></div></div>`;
+  const mount=()=>MOUNT(a,it);
+  a.querySelector('.replay').onclick=mount;
+  a.querySelector('.copy').onclick=async()=>{const t=`${it.ko} (${it.en})`;const ok=await copyText(t);toast(ok?`복사했어요 · ${t}`:t);};
+  a._mount=mount;return a;
+}
+let io=null;
+function renderCards(list,showCat){
+  if(io)io.disconnect();grid.innerHTML='';
+  if(!list.length){grid.innerHTML='<p class="empty-res">찾는 명칭이 없어요. 다른 단어(영문/한글)로 검색해 보세요.</p>';return;}
+  io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target._done){e.target._done=true;e.target._mount();}}),{rootMargin:'400px 0px'});
+  list.forEach(it=>{const c=makeCard(it,showCat);grid.appendChild(c);io.observe(c);});
+}
+function head(eb,t,d){$('#eyebrow').textContent=eb;$('#title').textContent=t;$('#desc').textContent=d;}
+function setNav(id){nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));const on=nav.querySelector('button.on');if(on&&getComputedStyle(nav).flexDirection==='row')nav.scrollTo({left:on.offsetLeft-12,behavior:'smooth'});}
+function show(id){
+  if(id==='all'){current='all';setNav('all');head(`${MODE} · 00 · All · ${ITEMS.length}개`,'전체 보기',ALL_DESC);renderCards(ITEMS,true);window.scrollTo(0,0);return;}
+  const cat=CATS.find(c=>c.id===id)||CATS[0];current=cat.id;setNav(cat.id);
+  const list=ITEMS.filter(x=>x.cat===cat.id);
+  head(`${MODE} · ${String(CATS.indexOf(cat)+1).padStart(2,'0')} · ${cat.en} · ${list.length}개`,cat.ko,cat.desc);
+  renderCards(list,false);window.scrollTo(0,0);
+}
+function search(v){
+  const k=v.trim().toLowerCase();if(!k){show(current);return;}
+  const list=ITEMS.filter(it=>[it.ko,it.en,it.alias||'',it.desc,it.dev||''].join(' ').toLowerCase().includes(k));
+  setNav('__none');head(`${MODE} · Search · ${list.length}개`,`“${v.trim()}” 검색 결과`,'모든 카테고리에서 한글명 · 영문명 · 별칭 · 설명을 함께 찾았어요.');
+  renderCards(list,true);
+}
+nav.innerHTML=`<button data-id="all"><span class="n">00</span><span class="k">전체<small>All</small></span><span class="c">${ITEMS.length}</span></button>`+CATS.map((c,i)=>`<button data-id="${c.id}"><span class="n">${String(i+1).padStart(2,'0')}</span><span class="k">${c.ko}<small>${c.en}</small></span><span class="c">${ITEMS.filter(x=>x.cat===c.id).length}</span></button>`).join('');
+const valid=id=>id==='all'||CATS.some(c=>c.id===id);
+nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;q.value='';if(location.hash==='#'+b.dataset.id)show(b.dataset.id);else location.hash=b.dataset.id;});
+window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(valid(id)){q.value='';show(id);}});
+let qt;q.addEventListener('input',()=>{clearTimeout(qt);qt=setTimeout(()=>search(q.value),180);});
+const md=$('.mode');md.addEventListener('click',()=>{md.classList.add('go');setTimeout(()=>md.classList.remove('go'),900);});
+const sid=location.hash.slice(1);show(valid(sid)?sid:CATS[0].id);
+</script>
+</body>
+</html>
