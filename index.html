@@ -60,6 +60,17 @@ main{min-width:0;padding:10px 6px 40px}
 @keyframes favpop{0%{transform:scale(.7)}100%{transform:scale(1)}}
 #nav button .fv{display:inline-flex;align-items:center;gap:7px}
 #nav button .fv svg{width:14px;height:14px;fill:#ffb020;stroke:none}
+.syncs{display:inline-flex;gap:6px;margin-left:4px}
+.syncs button{height:30px;border:0;border-radius:99px;padding:0 12px;font-size:12px;font-weight:700;cursor:pointer;background:var(--soft);color:#e5e5e5}
+.syncs button:hover{background:#2e2e2e}
+.dlg-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:900;display:none;align-items:center;justify-content:center;padding:20px}
+.dlg-bg.show{display:flex}
+.dlg{width:440px;max-width:100%;background:var(--panel);border-radius:28px;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+.dlg h4{margin:0;font-size:17px;color:#fff}
+.dlg p{margin:0;font-size:13px;line-height:1.6;color:#a8a8a8}
+.dlg textarea{width:100%;height:110px;resize:none;border:0;border-radius:18px;background:var(--soft);color:#fff;padding:14px;font:12px/1.5 var(--mono);outline:none;word-break:break-all}
+.dlg textarea:focus{box-shadow:inset 0 0 0 1.5px var(--accent)}
+.dlg .row{display:flex;gap:6px;justify-content:flex-end}
 .info{position:relative;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--soft);color:#cfcfcf;font-size:12px;font-weight:800;cursor:help;outline:none}
 .info:hover,.info:focus{background:#ededed;color:#131313}
 .info .tip{position:absolute;left:0;top:32px;width:330px;max-width:calc(100vw - 40px);background:#ededed;color:#131313;border-radius:18px;padding:14px 16px;font-size:12.5px;font-weight:500;line-height:1.6;box-shadow:0 14px 30px -10px rgba(0,0,0,.6);opacity:0;transform:translateY(-4px);pointer-events:none;transition:.18s;z-index:100;text-align:left;cursor:default}
@@ -826,6 +837,7 @@ body{padding:12px;display:grid;grid-template-columns:268px 1fr;gap:12px;min-heig
   <section id="grid" class="grid"></section>
 </main>
 <div id="toast" class="toast"></div>
+<div id="dlg" class="dlg-bg"><div class="dlg" role="dialog" aria-modal="true"><h4></h4><p></p><textarea spellcheck="false"></textarea><div class="row"><button class="btn sec cl">닫기</button><button class="btn pri go" style="margin-left:0"></button></div></div></div>
 
 
 <script>
@@ -2452,7 +2464,25 @@ const favKey=it=>it.cat+'|'+it.en;
 let FAV=new Set();try{FAV=new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]'));}catch(e){}
 function saveFav(){try{localStorage.setItem(FAV_KEY,JSON.stringify([...FAV]));return true;}catch(e){return false;}}
 const STAR='<svg viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></svg>';
-const INFO_TIP=`<span class="info" tabindex="0" aria-label="즐겨찾기 저장 안내">!<span class="tip" role="tooltip"><b>즐겨찾기는 이 브라우저에만 저장돼요</b>로그인 기준이 아니라 지금 쓰는 PC의 이 브라우저에 저장돼요. 다른 사람·다른 PC·다른 브라우저와는 공유되지 않아요. 브라우저를 업데이트해도 그대로 남아요.<ul><li>브라우저의 쿠키·사이트 데이터를 지우면 함께 삭제돼요</li><li>시크릿 창은 창을 닫으면 사라져요</li><li>사파리는 7일 넘게 방문하지 않으면 지워질 수 있어요</li><li>사이트 주소가 바뀌거나 내려받은 파일로 열면 따로 저장돼요</li><li>회사 보안 정책으로 종료 시 데이터를 지우는 PC도 있어요</li><li>PC·MO 페이지 즐겨찾기는 따로 저장돼요</li></ul></span></span>`;
+const INFO_TIP=`<span class="info" tabindex="0" aria-label="즐겨찾기 저장 안내">!<span class="tip" role="tooltip"><b>즐겨찾기는 이 브라우저에만 저장돼요</b>로그인 기준이 아니라 지금 쓰는 PC의 이 브라우저에 저장돼요. 다른 사람·다른 PC·다른 브라우저와는 공유되지 않아요. 브라우저를 업데이트해도 그대로 남아요.<ul><li>브라우저의 쿠키·사이트 데이터를 지우면 함께 삭제돼요</li><li>시크릿 창은 창을 닫으면 사라져요</li><li>사파리는 7일 넘게 방문하지 않으면 지워질 수 있어요</li><li>사이트 주소가 바뀌거나 내려받은 파일로 열면 따로 저장돼요</li><li>회사 보안 정책으로 종료 시 데이터를 지우는 PC도 있어요</li><li>PC·MO 페이지 즐겨찾기는 따로 저장돼요</li></ul><div style="margin-top:8px"><b style="display:inline;font-size:12.5px">다른 PC로 옮기려면</b> ‘코드 복사’로 받은 코드를 새 PC에서 ‘코드 붙여넣기’ 하세요. 새 용어가 추가돼도 저장한 즐겨찾기는 유지돼요.</div></span></span>`;
+const ALLKEYS={pc:'sd-fav-pc',mo:'sd-fav-mo'};
+const b64e=u=>{let s='';u.forEach(c=>s+=String.fromCharCode(c));return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');};
+const b64d=t=>{t=t.replace(/-/g,'+').replace(/_/g,'/');const s=atob(t);return Uint8Array.from(s,c=>c.charCodeAt(0));};
+async function pipe(u,stream){return new Uint8Array(await new Response(new Blob([u]).stream().pipeThrough(stream)).arrayBuffer());}
+async function makeCode(){const d={};for(const m in ALLKEYS){let a=[];try{a=JSON.parse(localStorage.getItem(ALLKEYS[m])||'[]');}catch(e){}if(m===MODE.toLowerCase())a=[...FAV];if(a.length)d[m]=a;}
+ const raw=new TextEncoder().encode(JSON.stringify(d));
+ if(typeof CompressionStream!=='undefined'){try{return 'SD1z-'+b64e(await pipe(raw,new CompressionStream('deflate-raw')));}catch(e){}}
+ return 'SD1j-'+b64e(raw);}
+async function readCode(code){code=code.trim().replace(/\s+/g,'');const m=code.match(/^SD1([zj])-([A-Za-z0-9_-]+)$/);if(!m)throw 0;let u=b64d(m[2]);if(m[1]==='z')u=await pipe(u,new DecompressionStream('deflate-raw'));const d=JSON.parse(new TextDecoder().decode(u));if(typeof d!=='object'||!d)throw 0;return d;}
+function openDlg(kind){const bg=$('#dlg');const ta=bg.querySelector('textarea'),go=bg.querySelector('.go');
+ if(kind==='copy'){bg.querySelector('h4').textContent='동기화 코드';bg.querySelector('p').innerHTML='이 코드를 메모나 메신저에 저장해 두세요. 다른 PC·브라우저에서 ‘코드 붙여넣기’로 즐겨찾기를 불러올 수 있어요. PC·MO 즐겨찾기가 함께 들어 있어요.';ta.readOnly=true;ta.value='만드는 중…';go.textContent='복사하기';
+  makeCode().then(c=>{ta.value=c;ta.select();});go.onclick=async()=>{const ok=await copyText(ta.value);toast(ok?'코드를 복사했어요':'코드를 직접 선택해 복사해 주세요');if(ok)closeDlg();};}
+ else{bg.querySelector('h4').textContent='코드 붙여넣기';bg.querySelector('p').innerHTML='저장해 둔 동기화 코드를 붙여넣으세요. 지금 있는 즐겨찾기는 그대로 두고, 코드 속 즐겨찾기를 <b style="color:#fff">더해요</b>.';ta.readOnly=false;ta.value='';ta.placeholder='SD1z-…';go.textContent='불러오기';setTimeout(()=>ta.focus(),50);
+  go.onclick=async()=>{let d;try{d=await readCode(ta.value);}catch(e){toast('코드가 올바르지 않아요. 다시 확인해 주세요');return;}
+   let added=0;for(const m in ALLKEYS){if(!Array.isArray(d[m]))continue;if(m===MODE.toLowerCase()){d[m].forEach(k=>{if(!FAV.has(k)){FAV.add(k);added++;}});saveFav();}else{try{const cur=new Set(JSON.parse(localStorage.getItem(ALLKEYS[m])||'[]'));d[m].forEach(k=>{if(!cur.has(k)){cur.add(k);added++;}});localStorage.setItem(ALLKEYS[m],JSON.stringify([...cur]));}catch(e){}}}
+   closeDlg();updFavCount();toast(added?`즐겨찾기 ${added}개를 불러왔어요`:'이미 모두 들어 있어요');if(current==='fav')show('fav');};}
+ bg.classList.add('show');}
+function closeDlg(){$('#dlg').classList.remove('show');}
 function updFavCount(){const b=nav.querySelector('[data-id="fav"] .c');if(b)b.textContent=FAV.size;}
 function makeCard(it,showCat){
   const a=document.createElement('article');a.className='card';const cat=CATS.find(c=>c.id===it.cat);
@@ -2475,7 +2505,7 @@ function renderCards(list,showCat,kind){
   io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target._done){e.target._done=true;e.target._mount();}}),{rootMargin:'400px 0px'});
   const frag=document.createDocumentFragment();list.forEach(it=>{const c=makeCard(it,showCat);frag.appendChild(c);});grid.appendChild(frag);grid.querySelectorAll('.card').forEach(c=>io.observe(c));
 }
-function head(t,n,d,info){$('#title').textContent=t;$('#cnt').textContent=n+'개';$('#desc').textContent=d;const o=$('#info');o.innerHTML=info?INFO_TIP:'';}
+function head(t,n,d,info){$('#title').textContent=t;$('#cnt').textContent=n+'개';$('#desc').textContent=d;const o=$('#info');o.innerHTML=info?INFO_TIP+'<span class="syncs"><button data-s="copy">코드 복사</button><button data-s="paste">코드 붙여넣기</button></span>':'';o.style.display=info?'inline-flex':'';o.style.alignItems='center';o.style.gap='6px';o.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>openDlg(b.dataset.s));}
 function setNav(id){nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));const on=nav.querySelector('button.on');if(on&&getComputedStyle(nav).flexDirection==='row')nav.scrollTo({left:on.offsetLeft-12,behavior:'smooth'});}
 function show(id){
   if(id==='fav'){current='fav';setNav('fav');const list=ITEMS.filter(it=>FAV.has(favKey(it)));head('즐겨찾기',list.length,'별표한 명칭을 모아 봤어요. 카테고리 순서대로 보여줘요.',true);renderCards(list,true,'fav');window.scrollTo(0,0);return;}
@@ -2497,6 +2527,7 @@ nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return
 window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(valid(id)){q.value='';show(id);}});
 let qt;q.addEventListener('input',()=>{clearTimeout(qt);qt=setTimeout(()=>search(q.value),180);});
 const md=$('.mode');md.querySelectorAll('a').forEach(x=>x.addEventListener('click',e=>{if(x.classList.contains('on')){e.preventDefault();return;}if(x.target!=='_blank')md.classList.add('go');}));
+$('#dlg').addEventListener('click',e=>{if(e.target.id==='dlg'||e.target.classList.contains('cl'))closeDlg();});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDlg();});
 const sid=location.hash.slice(1);show(valid(sid)?sid:CATS[0].id);
 </script>
 </body>
