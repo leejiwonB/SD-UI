@@ -48,6 +48,25 @@ main{min-width:0;padding:10px 6px 40px}
 .stage .hint{position:absolute;left:12px;top:12px;z-index:50;font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:99px;pointer-events:none;backdrop-filter:blur(6px)}
 .stage .replay{position:absolute;right:12px;top:12px;z-index:50;width:34px;height:34px;border-radius:50%;border:0;font-size:15px;cursor:pointer;opacity:0;transform:scale(.9);transition:opacity .2s,transform .2s;display:grid;place-items:center}
 .card:hover .replay,.replay:focus-visible{opacity:1;transform:none}
+.stage .replay{right:43px;width:27px;height:27px;font-size:12px}
+.stage .fav{transition:opacity .2s,transform .15s,color .2s}
+.stage .fav{position:absolute;right:12px;top:12px;z-index:50;width:27px;height:27px;opacity:0;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;background:#fff;color:#b5b3ab;box-shadow:0 2px 8px rgba(0,0,0,.12);transition:transform .15s,color .2s}
+.card:hover .fav,.fav:focus-visible,.stage .fav.on{opacity:1}
+@media (hover:none){.stage .fav{opacity:1}}
+.stage .fav:hover{color:#16161a;transform:scale(1.06)}
+.stage .fav svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.stage .fav.on{color:#ffb020}.stage .fav.on svg{fill:currentColor}
+.stage .fav.pop{animation:favpop .35s cubic-bezier(.3,1.6,.5,1)}
+@keyframes favpop{0%{transform:scale(.7)}100%{transform:scale(1)}}
+#nav button .fv{display:inline-flex;align-items:center;gap:7px}
+#nav button .fv svg{width:14px;height:14px;fill:#ffb020;stroke:none}
+.info{position:relative;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--soft);color:#cfcfcf;font-size:12px;font-weight:800;cursor:help;outline:none}
+.info:hover,.info:focus{background:#ededed;color:#131313}
+.info .tip{position:absolute;left:0;top:32px;width:330px;max-width:calc(100vw - 40px);background:#ededed;color:#131313;border-radius:18px;padding:14px 16px;font-size:12.5px;font-weight:500;line-height:1.6;box-shadow:0 14px 30px -10px rgba(0,0,0,.6);opacity:0;transform:translateY(-4px);pointer-events:none;transition:.18s;z-index:100;text-align:left;cursor:default}
+.info:hover .tip,.info:focus .tip{opacity:1;transform:none;pointer-events:auto}
+.info .tip b{display:block;font-size:13px;margin-bottom:4px}
+.info .tip ul{margin:6px 0 0;padding-left:16px}
+.info .tip li{margin:2px 0}
 @media (hover:none){.stage .replay{opacity:1;transform:none}}
 .meta{padding:14px 12px 8px;display:flex;flex-direction:column;gap:8px;flex:1}
 .names{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -803,7 +822,7 @@ body{padding:12px;display:grid;grid-template-columns:268px 1fr;gap:12px;min-heig
   <p class="side-foot">데모를 클릭·호버·스크롤해 보세요. ‘명칭 복사’로 “한글명 (English)”을 바로 전달할 수 있어요.</p>
 </aside>
 <main>
-  <header class="top"><div class="h"><h1 id="title"></h1><span class="cnt" id="cnt"></span></div><p class="d" id="desc"></p></header>
+  <header class="top"><div class="h"><h1 id="title"></h1><span class="cnt" id="cnt"></span><span id="info"></span></div><p class="d" id="desc"></p></header>
   <section id="grid" class="grid"></section>
 </main>
 <div id="toast" class="toast"></div>
@@ -2428,10 +2447,17 @@ const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'
 let current=CATS[0].id;
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast._h);toast._h=setTimeout(()=>t.classList.remove('show'),1600);}
 async function copyText(t){try{await navigator.clipboard.writeText(t);return true;}catch(e){}try{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok;}catch(e){return false;}}
+const FAV_KEY='sd-fav-'+MODE.toLowerCase();
+const favKey=it=>it.cat+'|'+it.en;
+let FAV=new Set();try{FAV=new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]'));}catch(e){}
+function saveFav(){try{localStorage.setItem(FAV_KEY,JSON.stringify([...FAV]));return true;}catch(e){return false;}}
+const STAR='<svg viewBox="0 0 24 24"><path d="M12 3.2l2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8z"/></svg>';
+const INFO_TIP=`<span class="info" tabindex="0" aria-label="즐겨찾기 저장 안내">!<span class="tip" role="tooltip"><b>즐겨찾기는 이 브라우저에만 저장돼요</b>로그인 기준이 아니라 지금 쓰는 PC의 이 브라우저에 저장돼요. 다른 사람·다른 PC·다른 브라우저와는 공유되지 않아요. 브라우저를 업데이트해도 그대로 남아요.<ul><li>브라우저의 쿠키·사이트 데이터를 지우면 함께 삭제돼요</li><li>시크릿 창은 창을 닫으면 사라져요</li><li>사파리는 7일 넘게 방문하지 않으면 지워질 수 있어요</li><li>사이트 주소가 바뀌거나 내려받은 파일로 열면 따로 저장돼요</li><li>회사 보안 정책으로 종료 시 데이터를 지우는 PC도 있어요</li><li>PC·MO 페이지 즐겨찾기는 따로 저장돼요</li></ul></span></span>`;
+function updFavCount(){const b=nav.querySelector('[data-id="fav"] .c');if(b)b.textContent=FAV.size;}
 function makeCard(it,showCat){
   const a=document.createElement('article');a.className='card';const cat=CATS.find(c=>c.id===it.cat);
   const hasMore=it.alias||it.dev;
-  a.innerHTML=`<div class="stage">${STAGE(it)}${it.hint?`<span class="hint">${it.hint}</span>`:''}<button class="replay" title="다시 재생" aria-label="다시 재생">↻</button></div>
+  a.innerHTML=`<div class="stage">${STAGE(it)}${it.hint?`<span class="hint">${it.hint}</span>`:''}<button class="replay" title="다시 재생" aria-label="다시 재생">↻</button><button class="fav ${FAV.has(favKey(it))?'on':''}" title="즐겨찾기" aria-label="즐겨찾기" aria-pressed="${FAV.has(favKey(it))}">${STAR}</button></div>
   <div class="meta">${showCat?`<span class="cattag">${cat.ko}</span>`:''}<div class="names"><h3 title="${esc(it.ko)}">${it.ko}</h3><span class="en" title="${esc(it.en)}">${it.en}</span></div><p class="desc">${it.desc}</p>
   <div class="more">${it.alias?`<div class="box"><b>다른 이름</b>${it.alias}</div>`:''}${it.dev?`<div class="box"><b>개발 용어</b><code>${esc(it.dev)}</code></div>`:''}</div>
   <div class="foot"><button class="btn sec mo-t">자세히</button><button class="btn pri copy">명칭 복사</button></div></div>`;
@@ -2439,18 +2465,20 @@ function makeCard(it,showCat){
   a.querySelector('.replay').onclick=mount;
   a.querySelector('.mo-t').onclick=e=>{const o=a.classList.toggle('open');e.currentTarget.textContent=o?'접기':'자세히';};
   a.querySelector('.copy').onclick=async()=>{const t=`${it.ko} (${it.en})`;const ok=await copyText(t);toast(ok?`복사했어요 · ${t}`:t);};
+  a.querySelector('.fav').onclick=e=>{const b=e.currentTarget,k=favKey(it);const on=!FAV.has(k);on?FAV.add(k):FAV.delete(k);const ok=saveFav();b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');updFavCount();toast(!ok?'이 브라우저에서는 저장할 수 없어요':on?'즐겨찾기에 추가했어요':'즐겨찾기에서 뺐어요');if(!on&&current==='fav'){a.remove();$('#cnt').textContent=FAV.size+'개';if(!FAV.size)renderCards([],false,'fav');}};
   a._mount=mount;return a;
 }
 let io=null;
-function renderCards(list,showCat){
+function renderCards(list,showCat,kind){
   if(io)io.disconnect();grid.innerHTML='';
-  if(!list.length){grid.innerHTML='<p class="empty-res">찾는 명칭이 없어요. 다른 단어(영문/한글)로 검색해 보세요.</p>';return;}
+  if(!list.length){grid.innerHTML=kind==='fav'?'<p class="empty-res">아직 즐겨찾기한 명칭이 없어요. 카드 오른쪽 위 ☆를 눌러 추가해 보세요.</p>':'<p class="empty-res">찾는 명칭이 없어요. 다른 단어(영문/한글)로 검색해 보세요.</p>';return;}
   io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&!e.target._done){e.target._done=true;e.target._mount();}}),{rootMargin:'400px 0px'});
   const frag=document.createDocumentFragment();list.forEach(it=>{const c=makeCard(it,showCat);frag.appendChild(c);});grid.appendChild(frag);grid.querySelectorAll('.card').forEach(c=>io.observe(c));
 }
-function head(t,n,d){$('#title').textContent=t;$('#cnt').textContent=n+'개';$('#desc').textContent=d;}
+function head(t,n,d,info){$('#title').textContent=t;$('#cnt').textContent=n+'개';$('#desc').textContent=d;const o=$('#info');o.innerHTML=info?INFO_TIP:'';}
 function setNav(id){nav.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.id===id));const on=nav.querySelector('button.on');if(on&&getComputedStyle(nav).flexDirection==='row')nav.scrollTo({left:on.offsetLeft-12,behavior:'smooth'});}
 function show(id){
+  if(id==='fav'){current='fav';setNav('fav');const list=ITEMS.filter(it=>FAV.has(favKey(it)));head('즐겨찾기',list.length,'별표한 명칭을 모아 봤어요. 카테고리 순서대로 보여줘요.',true);renderCards(list,true,'fav');window.scrollTo(0,0);return;}
   if(id==='all'){current='all';setNav('all');head('전체 보기',ITEMS.length,ALL_DESC);renderCards(ITEMS,true);window.scrollTo(0,0);return;}
   const cat=CATS.find(c=>c.id===id)||CATS[0];current=cat.id;setNav(cat.id);
   const list=ITEMS.filter(x=>x.cat===cat.id);
@@ -2463,8 +2491,8 @@ function search(v){
   setNav('__none');head(`“${v.trim()}” 검색 결과`,list.length,'모든 카테고리에서 한글명 · 영문명 · 다른 이름 · 설명을 함께 찾았어요.');
   renderCards(list,true);
 }
-nav.innerHTML=`<button data-id="all"><span>전체</span><span class="c">${ITEMS.length}</span></button>`+CATS.map(c=>`<button data-id="${c.id}"><span>${c.ko}</span><span class="c">${ITEMS.filter(x=>x.cat===c.id).length}</span></button>`).join('');
-const valid=id=>id==='all'||CATS.some(c=>c.id===id);
+nav.innerHTML=`<button data-id="all"><span>전체</span><span class="c">${ITEMS.length}</span></button><button data-id="fav"><span class="fv">${STAR}즐겨찾기</span><span class="c">${FAV.size}</span></button>`+CATS.map(c=>`<button data-id="${c.id}"><span>${c.ko}</span><span class="c">${ITEMS.filter(x=>x.cat===c.id).length}</span></button>`).join('');
+const valid=id=>id==='all'||id==='fav'||CATS.some(c=>c.id===id);
 nav.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;q.value='';if(location.hash==='#'+b.dataset.id)show(b.dataset.id);else location.hash=b.dataset.id;});
 window.addEventListener('hashchange',()=>{const id=location.hash.slice(1);if(valid(id)){q.value='';show(id);}});
 let qt;q.addEventListener('input',()=>{clearTimeout(qt);qt=setTimeout(()=>search(q.value),180);});
